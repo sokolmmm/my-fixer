@@ -1,0 +1,33 @@
+@import "var.scss";
+/*========== BASE ==========*/
+*,::before,::after {
+    box-sizing: border-box;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  header{
+    height: $headerHight;
+  }
+ 
+  
+  h1,h2,h3,ul,p {
+    margin: 0;
+  }
+  
+  
+  ul {
+    padding: 0;
+    list-style: none;
+  }
+  
+  a {
+    text-decoration: none;
+  }
+  
+  img {
+    max-width: 100%;
+    height: auto;
+  }
