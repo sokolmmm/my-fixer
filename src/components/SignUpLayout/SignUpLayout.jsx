@@ -3,21 +3,16 @@
 import React from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
 import Header from '../common/Header';
-import styles from './SignInLayout.module.scss';
+import styles from './SignUpLayout.module.scss';
 
-function SignInLayout() {
+function SignUpLayout() {
   const location = useLocation(0);
   const [path, setPath] = React.useState(location.pathname);
   const [headerData, setHeaderData] = React.useState();
   const [data] = React.useState([
     {
-      spanText: 'Do not have an account?',
-      linkText: 'Sign up',
-      linkHref: '/signup',
-    },
-    {
-      spanText: 'Back to ',
-      linkText: 'Sign in',
+      spanText: 'Already have an account?',
+      linkText: 'Log In',
       linkHref: '/signin',
     },
   ]);
@@ -27,7 +22,7 @@ function SignInLayout() {
   }, [location]);
 
   React.useEffect(() => {
-    if (path === '/signin') {
+    if (path.includes('/signup')) {
       setHeaderData(data[0]);
     } else if (path === '/signin/password-recovery') {
       setHeaderData(data[1]);
@@ -39,7 +34,7 @@ function SignInLayout() {
   return (
     <div>
       {headerData ? (
-        <div className={styles.signInWrapper}>
+        <div className={styles.signUpWrapper}>
           <Header
             spanText={headerData.spanText}
             linkText={headerData.linkText}
@@ -54,4 +49,4 @@ function SignInLayout() {
   );
 }
 
-export default SignInLayout;
+export default SignUpLayout;

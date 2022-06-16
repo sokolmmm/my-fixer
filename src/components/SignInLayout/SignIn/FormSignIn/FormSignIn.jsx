@@ -25,7 +25,7 @@ function FormSignIn() {
       {(formik) => (
         <Form className={styles.signInForm}>
           <Field
-            type="text"
+            type="email"
             id="email"
             name="email"
             placeholder="E-mail"
@@ -37,7 +37,7 @@ function FormSignIn() {
           </div>
 
           <Field
-            type="text"
+            type="password"
             id="password"
             name="password"
             placeholder="Password"
@@ -45,7 +45,7 @@ function FormSignIn() {
           />
 
           <div className={styles.errorPassword}>
-            <ErrorMessage name="password" component={TextError} />
+            <ErrorMessage className={styles.errorPassword} name="password" component={TextError} />
           </div>
 
           <NavLink to="password-recovery">Forgot password?</NavLink>

@@ -23,32 +23,4 @@
     grid-row-start: 5;
     grid-row-end: 6;
   }
-  
-  .email {
-    grid-row-start: 1;
-    grid-row-end: 2;
-  }
-
-  .errorEmail {
-    grid-row-start: 2;
-    grid-row-end: 3;
-  }
-
-  .password {
-    grid-row-start: 3;
-    grid-row-end: 4;
-  }
-
-  .errorPassword {
-    grid-row-start: 4;
-    grid-row-end: 5;
-  }
-
-  button {
-    grid-row-start: 6;
-    grid-row-end: 7;
-  }
-}
-
-@media screen and (max-width: 640px) {
 }
