@@ -31,6 +31,8 @@ function SignInLayout() {
       setb(data[0]);
     } else if (path === '/signin/password-recovery') {
       setb(data[1]);
+    } else if (path === '/signin/password-reset') {
+      setb(data[0]);
     }
   }, [path]);
 
@@ -45,7 +47,9 @@ function SignInLayout() {
           />
           <Outlet />
         </div>
-      ) : null}
+      ) : (
+        <div> hello</div>
+      )}
     </div>
   );
 }

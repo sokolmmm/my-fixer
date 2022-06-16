@@ -25,10 +25,12 @@ function PassRecoveryForm() {
             type="text"
             id="email"
             name="email"
-            placeholder="email"
+            placeholder="E-mail"
             className={styles.email}
           />
+
           <ErrorMessage name="email" component={TextError} />
+
           <GreenButton textBody="Send" />
         </Form>
       )}

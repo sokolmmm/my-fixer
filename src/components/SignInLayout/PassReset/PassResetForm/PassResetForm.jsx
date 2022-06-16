@@ -3,44 +3,33 @@ import {
   ErrorMessage, Field, Form, Formik,
 } from 'formik';
 import React from 'react';
-import { NavLink } from 'react-router-dom';
 import * as Yup from 'yup';
 import GreenButton from '../../../common/button/GreenButton/GreenButton';
 import TextError from '../../../common/form/TextError/TextError';
-import styles from './FormSignIn.module.scss';
+import styles from './PassResetForm.module.scss';
 
 const initialValues = {
-  email: '',
   password: '',
+  confirmPassword: '',
 };
 
 const validationSchema = Yup.object({
-  email: Yup.string().email('Invalid email address').required('Required'),
   password: Yup.string().required('Required'),
+  confirmPassword: Yup.string()
+    .oneOf([Yup.ref('password')], 'Пароли не совпадают')
+    .required('Required'),
 });
 
-function FormSignIn() {
+function PassResetForm() {
   return (
     <Formik initialValues={initialValues} validationSchema={validationSchema}>
       {(formik) => (
-        <Form className={styles.signInForm}>
+        <Form className={styles.passResetForm}>
           <Field
-            type="text"
-            id="email"
-            name="email"
-            placeholder="E-mail"
-            className={styles.email}
-          />
-
-          <div className={styles.errorEmail}>
-            <ErrorMessage name="email" component={TextError} />
-          </div>
-
-          <Field
-            type="text"
+            type="password"
             id="password"
             name="password"
-            placeholder="Password"
+            placeholder="New password"
             className={styles.password}
           />
 
@@ -48,13 +37,23 @@ function FormSignIn() {
             <ErrorMessage name="password" component={TextError} />
           </div>
 
-          <NavLink to="password-recovery">Forgot password?</NavLink>
+          <Field
+            type="password"
+            id="confirmPassword"
+            name="confirmPassword"
+            placeholder="Confirm password"
+            className={styles.confirmPassword}
+          />
 
-          <GreenButton textBody="Sign in" />
+          <div className={styles.errorConfirmPassword}>
+            <ErrorMessage name="confirmPassword" component={TextError} />
+          </div>
+
+          <GreenButton textBody="Reset" />
         </Form>
       )}
     </Formik>
   );
 }
 
-export default FormSignIn;
+export default PassResetForm;
