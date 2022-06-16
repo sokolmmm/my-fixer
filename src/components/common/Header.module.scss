@@ -1,0 +1,58 @@
+@import '../../scss/variables';
+
+.header {
+  height: $header-height;
+  display: grid;
+  grid-template-columns: auto auto;
+
+  figure {
+    justify-self: start;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 4.75rem;
+  }
+
+  nav {
+    justify-self: end;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 300;
+    margin-right: 4.75rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .header {
+    figure {
+      justify-self: start;
+      margin-left: 2rem;
+    }
+
+    nav {
+      justify-self: end;
+      margin-right: 2rem;
+    }
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .header {
+    grid-template-columns: 1fr;
+    grid-template-rows: 2.875rem 2.75rem;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+
+    figure {
+      margin: 0;
+      align-self: end;
+      justify-self: center;
+    }
+    nav {
+      margin: 0;
+      justify-self: center;
+    }
+  }
+}

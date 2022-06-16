@@ -1,0 +1,19 @@
+.button {
+    width: 190px;
+    height: 40px;
+    align-self: end;
+    justify-self: end;
+    background: #0ad69c;
+    border: none;
+    border-radius: 2px;
+    padding: 0;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-family: 'Exo 2', sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+    letter-spacing: 0.025rem;
+    color: #FFFFFF;
+  }

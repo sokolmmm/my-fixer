@@ -1,33 +1,93 @@
-@import "var.scss";
+@import './scss/variables';
 /*========== BASE ==========*/
-*,::before,::after {
-    box-sizing: border-box;
+*,
+::before,
+::after {
+  box-sizing: border-box;
+}
+
+// html,
+// body {
+//   overflow: hidden;
+// }
+// html {
+//   font-size: 16px;
+// }
+body {
+  font-family: $body-font;
+  font-size: $normal-font-size;
+  font-style: normal;
+  line-height: 1.19rem;
+}
+
+#root {
+  background-color: $body-color;
+}
+
+// header{
+//   height: $headerHight;
+// }
+html,
+body,
+h1,
+h2,
+h3,
+ul,
+p,
+figure {
+  margin: 0;
+  padding: 0;
+}
+
+h1,
+h2,
+h3 {
+  letter-spacing: 0.025rem;
+}
+
+h1 {
+  line-height: 2.125rem;
+}
+
+ul {
+  padding: 0;
+  list-style: none;
+}
+
+a,
+a:active,
+a:hover {
+  text-decoration: none;
+  color: $link-color;
+  font-weight: 500;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+//==============================
+
+
+
+input {
+  border: 2px solid #f2f2f2;
+  border-radius: 2px;
+  height: 2.5rem;
+
+  &:placeholder-shown {
+    color: #222428;
+    font-weight: 400;
+    font-size: 0.875rem;
+    line-height: 1rem;
+    letter-spacing: 0.28px;
   }
-  
-  html {
-    scroll-behavior: smooth;
+
+  &:active,
+  &:focus {
+    outline: none;
+    border-left: 2px solid #2a74db;
+    background: #ffffff;
   }
-  
-  header{
-    height: $headerHight;
-  }
- 
-  
-  h1,h2,h3,ul,p {
-    margin: 0;
-  }
-  
-  
-  ul {
-    padding: 0;
-    list-style: none;
-  }
-  
-  a {
-    text-decoration: none;
-  }
-  
-  img {
-    max-width: 100%;
-    height: auto;
-  }
+}
