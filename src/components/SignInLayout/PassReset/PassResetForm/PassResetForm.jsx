@@ -16,7 +16,7 @@ const initialValues = {
 const validationSchema = Yup.object({
   password: Yup.string().required('Required'),
   confirmPassword: Yup.string()
-    .oneOf([Yup.ref('password')], 'Пароли не совпадают')
+    .oneOf([Yup.ref('password')], 'Паролі не співпадають')
     .required('Required'),
 });
 

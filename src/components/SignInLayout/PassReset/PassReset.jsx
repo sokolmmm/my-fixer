@@ -4,7 +4,7 @@ import PassResetForm from './PassResetForm/PassResetForm';
 
 function PassReset() {
   return (
-    <section className={styles.passRecovery}>
+    <section className={styles.passReset}>
       <h1>Reset your password</h1>
       <PassResetForm />
     </section>

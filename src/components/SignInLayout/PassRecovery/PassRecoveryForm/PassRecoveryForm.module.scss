@@ -1,28 +1,6 @@
-@import '../../../../scss/variables';
+@import '../../../../scss/mixin';
+
 .passRecoveryForm {
-  display: grid;
-  align-items: center;
+  @include windowForm;
   grid-template-rows: 2.5rem 2.5rem 2.5rem;
-  justify-self: center;
-  max-width: 25rem;
-  width: 85%;
-
-  .email {
-    grid-row-start: 1;
-    grid-row-end: 2;
-  }
-
-  input {
-    width: 100%;
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
-
-  button {
-    grid-row-start: 3;
-    grid-row-end: 4;
-  }
-}
-
-@media screen and (max-width: 640px) {
 }

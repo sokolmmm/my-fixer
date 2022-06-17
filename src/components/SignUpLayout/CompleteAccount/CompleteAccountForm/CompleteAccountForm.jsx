@@ -50,7 +50,7 @@ function CompleteAccountForm() {
             placeholder="Confirm password"
           />
 
-          <div className={styles.errorConfirmPassword}>
+          <div>
             <ErrorMessage name="confirmPassword" component={TextError} />
           </div>
 
@@ -59,20 +59,17 @@ function CompleteAccountForm() {
             <span className={styles.custom}> </span>
             <span className={styles.text}>
               I agree to the myFixer.com
+              {' '}
               <a href="s">Terms of Service</a>
             </span>
           </label>
 
           <label htmlFor="privacyPolicy" className={styles.checkboxLabel}>
-            <Field
-              type="checkbox"
-              id="privacyPolicy"
-              name="privacyPolicy"
-              className={styles.checkbox}
-            />
+            <Field type="checkbox" id="privacyPolicy" name="privacyPolicy" />
             <span className={styles.custom}> </span>
             <span className={styles.text}>
               I agree to the myFixer.com
+              {' '}
               <a href="s">Privacy Policy </a>
             </span>
           </label>

@@ -1,10 +1,6 @@
-@import '../../scss/variables';
+@import '../../scss/mixin';
 
 .signInWrapper {
-  height: 100vh;
-  display: grid;
-  grid-template-rows: $header-height auto;
-  background-color: $content-color;
-  align-items: center;
+  @include loginLayout;
 }
 
