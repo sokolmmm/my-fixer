@@ -1,4 +1,4 @@
-@import '../../scss/variables';
+@import '../../../scss/variables';
 
 .header {
   height: $header-height;
@@ -20,20 +20,6 @@
     align-items: center;
     font-weight: 300;
     margin-right: 4.75rem;
-  }
-}
-
-@media screen and (max-width: 768px) {
-  .header {
-    figure {
-      justify-self: start;
-      margin-left: 2rem;
-    }
-
-    nav {
-      justify-self: end;
-      margin-right: 2rem;
-    }
   }
 }
 

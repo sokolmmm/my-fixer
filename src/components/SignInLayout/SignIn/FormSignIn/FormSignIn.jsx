@@ -32,7 +32,7 @@ function FormSignIn() {
             className={styles.email}
           />
 
-          <div className={styles.errorEmail}>
+          <div>
             <ErrorMessage name="email" component={TextError} />
           </div>
 
@@ -44,7 +44,7 @@ function FormSignIn() {
             className={styles.password}
           />
 
-          <div className={styles.errorPassword}>
+          <div>
             <ErrorMessage className={styles.errorPassword} name="password" component={TextError} />
           </div>
 

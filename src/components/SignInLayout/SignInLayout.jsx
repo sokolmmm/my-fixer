@@ -2,7 +2,7 @@
 /* eslint-disable react/style-prop-object */
 import React from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
-import Header from '../common/Header';
+import Header from '../common/Header/Header';
 import styles from './SignInLayout.module.scss';
 
 function SignInLayout() {
@@ -33,6 +33,8 @@ function SignInLayout() {
       setHeaderData(data[1]);
     } else if (path === '/signin/password-reset') {
       setHeaderData(data[0]);
+    } else if (path === '/signin/password-reset-successful') {
+      setHeaderData(data[1]);
     }
   }, [path]);
 

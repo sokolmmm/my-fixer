@@ -1,26 +1,14 @@
-@import '../../../../scss/variables';
-.signInForm {
-  display: grid;
-  align-items: center;
-  grid-template-rows: 2.5rem 2.5rem 2.5rem 2.5rem 2.5rem 2.5rem;
-  justify-self: center;
-  max-width: 25rem;
-  width: 85%;
+@import '../../../../scss/mixin';
 
-  input {
-    width: 100%;
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
+.signInForm {
+  @include windowForm;
+  grid-template-rows: 2.5rem 2rem 2.5rem 2rem 2.5rem 2.5rem;
 
   a {
     justify-self: end;
-    color: $link-color-alt;
+    color: #222428;
     font-weight: 400;
-    font-size: $small-font-size;
+    font-size: 0.75rem;
     line-height: 0.875rem;
-    letter-spacing: 0.28px;
-    grid-row-start: 5;
-    grid-row-end: 6;
   }
 }

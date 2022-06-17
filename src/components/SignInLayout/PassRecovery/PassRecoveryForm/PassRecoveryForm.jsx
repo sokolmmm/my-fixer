@@ -22,14 +22,15 @@ function PassRecoveryForm() {
       {(formik) => (
         <Form className={styles.passRecoveryForm}>
           <Field
-            type="text"
+            type="email"
             id="email"
             name="email"
             placeholder="E-mail"
-            className={styles.email}
           />
 
-          <ErrorMessage name="email" component={TextError} />
+          <div>
+            <ErrorMessage name="email" component={TextError} />
+          </div>
 
           <GreenButton textBody="Send" />
         </Form>

@@ -1,28 +1,13 @@
-@import '../../../../scss/variables';
-.signUpForm {
-  display: grid;
-  align-items: center;
-  grid-template-rows: 2.5rem 2rem 2.5rem 2rem 2.5rem 2rem 2.5rem;
-  justify-self: center;
-  max-width: 25rem;
-  width: 85%;
+@import '../../../../scss/mixin';
 
-  input {
-    width: 100%;
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
-  .nameGroup {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    column-gap: 20px;
-  }
+.signUpForm {
+  @include windowForm;
+  grid-template-rows: 2.5rem 2rem 2.5rem 2rem 2.5rem 2rem 2.5rem;
+
+  .nameGroup,
   .errornameGroup {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    column-gap: 20px;
+    column-gap: 1.25rem;
   }
-}
-
-@media screen and (max-width: 640px) {
 }

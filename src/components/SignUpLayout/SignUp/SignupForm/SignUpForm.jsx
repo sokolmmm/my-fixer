@@ -34,7 +34,6 @@ function SignUpForm() {
               id="firstName"
               name="firstName"
               placeholder="First name"
-              className={styles.firstName}
             />
 
             <Field
@@ -42,15 +41,14 @@ function SignUpForm() {
               id="lastName"
               name="lastName"
               placeholder="Last name"
-              className={styles.lastName}
             />
           </div>
           <div className={styles.errornameGroup}>
-            <div className={styles.errorFirstName}>
+            <div>
               <ErrorMessage name="firstName" component={TextError} />
             </div>
 
-            <div className={styles.errorLastName}>
+            <div>
               <ErrorMessage name="lastName" component={TextError} />
             </div>
           </div>
@@ -60,10 +58,9 @@ function SignUpForm() {
             id="userName"
             name="userName"
             placeholder="Username "
-            className={styles.userName}
           />
 
-          <div className={styles.errorUserName}>
+          <div>
             <ErrorMessage name="userName" component={TextError} />
           </div>
 
@@ -72,10 +69,9 @@ function SignUpForm() {
             id="email"
             name="email"
             placeholder="E-mail "
-            className={styles.email}
           />
 
-          <div className={styles.errorEmail}>
+          <div>
             <ErrorMessage name="email" component={TextError} />
           </div>
 

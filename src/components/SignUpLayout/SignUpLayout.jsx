@@ -2,7 +2,7 @@
 /* eslint-disable react/style-prop-object */
 import React from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
-import Header from '../common/Header';
+import Header from '../common/Header/Header';
 import styles from './SignUpLayout.module.scss';
 
 function SignUpLayout() {
