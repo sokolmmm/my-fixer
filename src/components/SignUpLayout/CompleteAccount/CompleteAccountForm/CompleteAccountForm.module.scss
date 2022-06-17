@@ -1,0 +1,90 @@
+.completeAccountForm {
+  display: grid;
+  align-items: center;
+  grid-template-rows: 2.5rem 2rem 2.5rem 2rem 2rem 2rem 5rem 3rem;
+  align-content: center;
+  justify-self: center;
+  max-width: 25rem;
+  width: 85%;
+
+  .checkboxLabel {
+    display: grid;
+    grid-template-columns: 2.25rem auto;
+    align-content: center;
+
+    input {
+      display: none;
+    }
+
+    .custom {
+      display: block;
+      width: 1.5rem;
+      height: 1.5rem;
+      background: #ffffff;
+      border: 2px solid #f2f2f2;
+      border-radius: 2px;
+      position: relative;
+      transition: 0.2s;
+      cursor: pointer;
+      display: grid;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .custom::before {
+      content: url('../../../../assets/images/checkbox_checked.svg');
+      opacity: 0;
+    }
+
+    input:checked + .custom::before {
+      opacity: 1;
+    }
+
+    .text {
+      font-weight: 300;
+      font-size: 14px;
+      line-height: 16px;
+      letter-spacing: 0.28px;
+    }
+
+    span {
+      color: #222428;
+    }
+
+    .text {
+      align-self: center;
+    }
+  }
+
+  img {
+    height: 60px;
+    width: 210px;
+  }
+
+  .errorPassword {
+    align-self: start;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 5px;
+
+    span::after {
+      display: block;
+      margin-top: 6px;
+      content: '';
+      background: #38ecac;
+      height: 6px;
+      border-radius: 3px;
+    }
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .completeAccountForm {
+    grid-template-rows: 2.5rem 2rem 2.5rem 2rem 2.5rem 2.5rem 5rem 3rem;
+  }
+
+  .text {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+  }
+}
