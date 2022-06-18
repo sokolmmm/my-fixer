@@ -1,0 +1,31 @@
+.button {
+  width: 11.875rem;
+  height: 2.5rem;
+  align-self: end;
+  justify-self: end;
+  border: none;
+  border-radius: 2px;
+  padding: 0;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  font-family: 'Exo 2', sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: 0.025rem;
+  color: #ffffff;
+  background: #0ad69c;
+  transition: backgroung 0.2s ease-in-out;
+
+  &:hover {
+    background: lighten($color: #0ad69c, $amount: 5%);
+  }
+  &:active {
+    background: darken($color: #0ad69c, $amount: 5%);
+  }
+
+  @media screen and (max-width: 420px) {
+    width: 10rem;
+  }
+}

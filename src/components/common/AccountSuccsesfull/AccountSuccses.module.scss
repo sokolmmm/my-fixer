@@ -1,0 +1,44 @@
+@import '../../../scss/variables';
+
+.accountSuccessful {
+  padding: 0.625rem;
+  justify-self: center;
+  display: grid;
+  grid-template-rows: 12.5rem auto auto;
+  align-items: center;
+
+  h1 {
+    max-width: 40.625rem;
+    text-align: center;
+    font-size: 3.125rem;
+    line-height: 3.75rem;
+    letter-spacing: 0.4px;
+    justify-self: center;
+  }
+
+  p {
+    font-family: 'Exo 2';
+    font-size: 1.5rem;
+    text-align: center;
+    letter-spacing: 0.4px;
+    color: #000000;
+  }
+
+  figure {
+    display: grid;
+    justify-content: center;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .accountSuccessful {
+    h1 {
+      font-size: 2.375rem;
+      line-height: 2.8575rem;
+    }
+
+    p {
+      font-size: 1.25rem;
+    }
+  }
+}

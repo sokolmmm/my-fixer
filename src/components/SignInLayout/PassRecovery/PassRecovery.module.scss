@@ -1,0 +1,6 @@
+@import '../../../scss/mixin';
+
+.passRecovery {
+  @include windowSection();
+  gap: 2.375rem;
+}

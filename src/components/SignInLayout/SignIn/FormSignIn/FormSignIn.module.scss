@@ -1,0 +1,14 @@
+@import '../../../../scss/mixin';
+
+.signInForm {
+  @include windowForm;
+  grid-template-rows: 2.5rem 2rem 2.5rem 2rem 2.5rem 2.5rem;
+
+  a {
+    justify-self: end;
+    color: #222428;
+    font-weight: 400;
+    font-size: 0.75rem;
+    line-height: 0.875rem;
+  }
+}

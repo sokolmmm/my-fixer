@@ -1,0 +1,6 @@
+@import '../../../../scss/mixin';
+
+.passResetForm {
+  @include windowForm;
+  grid-template-rows: 2.5rem 2rem 2.5rem 2rem 2.5rem;
+}
