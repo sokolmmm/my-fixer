@@ -1,6 +1,6 @@
 import './App.scss';
 import React from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { NavLink, Route, Routes } from 'react-router-dom';
 import SignInLayout from './components/SignInLayout/SignInLayout';
 import SignIn from './components/SignInLayout/SignIn/SignIn';
 import PassRecovery from './components/SignInLayout/PassRecovery/PassRecovery';
@@ -10,6 +10,7 @@ import SignUp from './components/SignUpLayout/SignUp/SignUp';
 import CompleteAccount from './components/SignUpLayout/CompleteAccount/CompleteAccount';
 import ResetSuccessful from './components/SignInLayout/ResetSuccessful/ResetSuccessful';
 import CompleteAccountSuccessful from './components/SignUpLayout/CompleteAccountSuccessful/AccountSuccessful';
+import Profile from './components/Profile/Profile';
 
 function App() {
   return (
@@ -26,7 +27,42 @@ function App() {
           <Route path="complete-account" element={<CompleteAccount />} />
           <Route path="complete-account-successful" element={<CompleteAccountSuccessful />} />
         </Route>
-        <Route path="/" element={<div> hello </div>} />
+        <Route path="/profile" element={<Profile />} />
+        <Route
+          path="/"
+          element={(
+            <div>
+              <ul>
+                <li>
+                  <NavLink to="/signin"> signin </NavLink>
+                </li>
+                <li>
+                  <NavLink to="/signin/password-recovery"> password-recovery </NavLink>
+                </li>
+                <li>
+                  <NavLink to="/signin/password-reset"> password-reset </NavLink>
+                </li>
+                <li>
+                  <NavLink to="/signin/password-reset-successful">password-reset-successful </NavLink>
+                </li>
+                <li>
+                  <NavLink to="/signup"> signup </NavLink>
+
+                </li>
+                <li>
+                  <NavLink to="/signup/complete-account"> complete-account </NavLink>
+
+                </li>
+                <li>
+                  <NavLink to="/signup/complete-account-successful"> complete-account-successful </NavLink>
+                </li>
+                <li>
+                  <NavLink to="/profile"> profile </NavLink>
+                </li>
+              </ul>
+            </div>
+)}
+        />
       </Routes>
     </div>
   );
