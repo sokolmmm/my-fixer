@@ -1,0 +1,113 @@
+.header {
+  grid-area: header;
+  background: #ffffff;
+  display: grid;
+  grid-template-columns: 80px minmax(20px, 100px) minmax(640px, 1150px) minmax(
+      20px,
+      1fr
+    );
+
+  .headerLogo {
+    background: #01134e;
+    display: grid;
+    justify-content: center;
+    height: 100%;
+
+    a {
+      align-self: center;
+    }
+  }
+
+  .headerContent {
+    grid-column-start: 3;
+    grid-column-end: 4;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+  }
+  .history {
+    display: grid;
+    grid-template-columns: 70px 70px;
+    gap: 30px;
+
+    span {
+      // height: 30px;
+      font-family: 'Roboto';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 13px;
+      line-height: 15px;
+      letter-spacing: 0.685714px;
+      color: #252f48;
+      position: relative;
+
+      &::after {
+        content: url('../../../../assets/images/arrow.svg');
+        position: absolute;
+        top: 0;
+        right: 0;
+      }
+    }
+
+    span:last-child::after {
+      content: none;
+    }
+  }
+
+  figure {
+    height: 100%;
+    justify-self: end;
+    display: grid;
+    grid-template-columns: auto auto;
+    align-items: center;
+    align-self: center;
+    gap: 10px;
+
+    img {
+      height: 22px;
+      width: 22px;
+    }
+    figcaption {
+      font-family: 'Roboto';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 16px;
+      letter-spacing: 0.28px;
+      color: #252f48;
+      justify-self: end;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .header {
+    display: grid;
+    grid-template-columns: 80px 1fr 20px;
+
+    .headerLogo {
+      background: #ffffff;
+
+      path {
+        fill: #01134e;
+      }
+    }
+    
+    .headerContent {
+      grid-column-start: 2;
+      grid-column-end: 3;
+      grid-template-columns: minmax(0px, 20px) 1fr;
+
+      .history {
+        visibility: hidden;
+      }
+
+      figure {
+        display: flex;
+        align-self: center;
+        align-items: center;
+        justify-items: center;
+      }
+    }
+  }
+}

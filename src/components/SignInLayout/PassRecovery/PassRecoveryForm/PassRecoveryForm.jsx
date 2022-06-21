@@ -5,7 +5,7 @@ import {
 import React from 'react';
 import * as Yup from 'yup';
 import GreenButton from '../../../common/button/GreenButton/GreenButton';
-import TextError from '../../../common/form/TextError/TextError';
+import TextError from '../../../common/Forms/TextError/TextError';
 import styles from './PassRecoveryForm.module.scss';
 
 const initialValues = {
