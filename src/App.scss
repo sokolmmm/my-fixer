@@ -63,12 +63,20 @@ img {
 
 //==============================
 
-
-
 input {
   border: 2px solid #f2f2f2;
   border-radius: 2px;
   height: 2.5rem;
+  background-color: #fcfcfc;
+
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16px;
+  letter-spacing: 0.28px;
+  padding: 0 1rem;
+  color: #222428;
 
   &:placeholder-shown {
     color: #222428;

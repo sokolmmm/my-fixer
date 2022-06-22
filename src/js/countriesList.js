@@ -427,13 +427,6 @@ const countriesList = [
     MobileCode: '+420',
   },
   {
-    Name: 'Democratic Republic of Timor-Leste',
-    Code: 'TL',
-    Timezone: 'Tokyo Standard Time',
-    UTC: 'UTC+09:00',
-    MobileCode: '+670',
-  },
-  {
     Name: 'Denmark',
     Code: 'DK',
     Timezone: 'Romance Standard Time',
@@ -560,13 +553,6 @@ const countriesList = [
     MobileCode: '+689',
   },
   {
-    Name: 'French Southern and Antarctic Lands',
-    Code: 'TF',
-    Timezone: 'West Asia Standard Time',
-    UTC: 'UTC+05:00',
-    MobileCode: '+',
-  },
-  {
     Name: 'Gabon',
     Code: 'GA',
     Timezone: 'W. Central Africa Standard Time',
@@ -684,13 +670,6 @@ const countriesList = [
     Timezone: 'Eastern Standard Time',
     UTC: 'UTC-05:00',
     MobileCode: '+509',
-  },
-  {
-    Name: 'Heard Island and McDonald Islands',
-    Code: 'HM',
-    Timezone: 'Mauritius Standard Time',
-    UTC: 'UTC+04:00',
-    MobileCode: '+ ',
   },
   {
     Name: 'Honduras',
@@ -917,7 +896,7 @@ const countriesList = [
     MobileCode: '+853',
   },
   {
-    Name: 'Macedonia, Former Yugoslav Republic of',
+    Name: 'Macedonia',
     Code: 'MK',
     Timezone: 'Central European Standard Time',
     UTC: 'UTC+01:00',
@@ -1309,13 +1288,6 @@ const countriesList = [
     MobileCode: '+590',
   },
   {
-    Name: 'Saint Helena, Ascension and Tristan da Cunha',
-    Code: 'SH',
-    Timezone: 'Greenwich Standard Time',
-    UTC: 'UTC',
-    MobileCode: '+290',
-  },
-  {
     Name: 'Saint Kitts and Nevis',
     Code: 'KN',
     Timezone: 'SA Western Standard Time',
@@ -1328,13 +1300,6 @@ const countriesList = [
     Timezone: 'SA Western Standard Time',
     UTC: 'UTC-04:00',
     MobileCode: '+1-758',
-  },
-  {
-    Name: 'Saint Martin (French part)',
-    Code: 'MF',
-    Timezone: 'SA Western Standard Time',
-    UTC: 'UTC-04:00',
-    MobileCode: '+590',
   },
   {
     Name: 'Saint Pierre and Miquelon',
@@ -1454,13 +1419,6 @@ const countriesList = [
     Timezone: 'South Africa Standard Time',
     UTC: 'UTC+02:00',
     MobileCode: '+27',
-  },
-  {
-    Name: 'South Georgia and the South Sandwich Islands',
-    Code: 'GS',
-    Timezone: 'UTC-02',
-    UTC: 'UTC-02:00',
-    MobileCode: '+',
   },
   {
     Name: 'South Sudan',

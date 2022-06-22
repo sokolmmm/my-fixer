@@ -9,18 +9,23 @@
 }
 
 main {
+  overflow-y: scroll;
   border-top: 1px solid #dee5f0;
   background: #eff1f4;
   display: grid;
-  grid-template-columns: minmax(20px, 100px) minmax(640px, 1150px) minmax(
+  grid-template-columns: minmax(20px, 100px) minmax(570px, 1150px) minmax(
       20px,
       1fr
     );
-  align-items: center;
+  grid-template-rows: minmax(20px, 1fr) minmax(570px, auto) minmax(20px, 1fr);
+
+  // align-items: center;
   section {
-  background: #FFFFFF;
+    background: #ffffff;
     grid-column-start: 2;
     grid-column-end: 3;
+    grid-row-start: 2;
+    grid-row-end: 3;
   }
 }
 
@@ -36,6 +41,17 @@ main {
     main {
       grid-template-columns: 20px 1fr 20px;
       align-items: center;
+    }
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .wrapper {
+    main {
+      grid-template-rows: minmax(20px, auto) auto minmax(
+          20px,
+          auto
+        );
     }
   }
 }
