@@ -6,7 +6,7 @@ import * as Yup from 'yup';
 import avatar from '../../../assets/images/avatar.png';
 import countriesList from '../../../js/countriesList';
 import pencilImg from '../../../assets/images/pencil.svg';
-import styles from './PersonalInformation.module.scss';
+import styles from './PersonalInfo.module.scss';
 import GreenButton from '../../common/button/GreenButton/GreenButton';
 
 const initialValues = {
@@ -23,7 +23,7 @@ const validationSchema = Yup.object({
   email: Yup.string().email('Invalid email address').required('Required'),
 });
 
-function PersonalInformation() {
+function PersonalInfo() {
   return (
     <Formik initialValues={initialValues} validationSchema={validationSchema}>
       {(formik) => (
@@ -73,10 +73,9 @@ function PersonalInformation() {
             <div className={styles.formControl}>
               <label htmlFor="mobilePhone">MobilePhone</label>
               <Field
-                type="text"
+                type="tel"
                 id="mobilePhone"
                 name="mobilePhone"
-                placeholder="mobilePhone"
               />
             </div>
             <div className={styles.formControl}>
@@ -85,7 +84,6 @@ function PersonalInformation() {
                 type="text"
                 id="company"
                 name="company"
-                placeholder="company"
               />
             </div>
             <GreenButton textBody="Done!" />
@@ -96,4 +94,4 @@ function PersonalInformation() {
   );
 }
 
-export default PersonalInformation;
+export default PersonalInfo;

@@ -3,7 +3,8 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
 import styles from './Profile.module.scss';
-import PersonalInformation from './PersonalInformation/PersonalInformation';
+import PersonalInfo from './PersonalInfo/PersonalInfo';
+import AccountInfo from './AccountInfo/AccountInfo';
 
 function Profile() {
   const [activeTab, setActiveTab] = React.useState(true);
@@ -38,7 +39,7 @@ function Profile() {
           ACCOUNT INFORMATION
         </button>
       </div>
-      { activeTab ? <PersonalInformation /> : <div> </div> }
+      { activeTab ? <PersonalInfo /> : <AccountInfo />}
     </section>
   );
 }
