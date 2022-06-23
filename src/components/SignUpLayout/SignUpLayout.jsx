@@ -2,7 +2,7 @@
 /* eslint-disable react/style-prop-object */
 import React from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
-import Header from '../common/Header/Header';
+import LoginHeader from '../common/Headers/LoginHeader/LoginHeader';
 import styles from './SignUpLayout.module.scss';
 
 function SignUpLayout() {
@@ -35,7 +35,7 @@ function SignUpLayout() {
     <div>
       {headerData ? (
         <div className={styles.signUpWrapper}>
-          <Header
+          <LoginHeader
             spanText={headerData.spanText}
             linkText={headerData.linkText}
             linkHref={headerData.linkHref}

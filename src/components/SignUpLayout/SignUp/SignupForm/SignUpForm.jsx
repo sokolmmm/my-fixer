@@ -6,7 +6,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import * as Yup from 'yup';
 import GreenButton from '../../../common/button/GreenButton/GreenButton';
-import TextError from '../../../common/form/TextError/TextError';
+import TextError from '../../../common/Forms/TextError/TextError';
 import styles from './SignUpForm.module.scss';
 
 const initialValues = {

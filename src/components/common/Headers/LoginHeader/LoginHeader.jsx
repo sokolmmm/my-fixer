@@ -1,9 +1,9 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import styles from './Header.module.scss';
+import styles from './LoginHeader.module.scss';
 
-function Header({ spanText, linkText, linkHref }) {
+function LoginHeader({ spanText, linkText, linkHref }) {
   return (
     <header className={styles.header}>
       <figure>
@@ -123,4 +123,4 @@ function Header({ spanText, linkText, linkHref }) {
   );
 }
 
-export default Header;
+export default LoginHeader;

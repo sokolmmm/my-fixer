@@ -1,80 +1,64 @@
 .profileWrapper {
-  height: 100vh;
+  box-shadow: 0px 0px 30px rgba(153, 163, 174, 0.06);
+  border-radius: 4px;
   display: grid;
-  grid-template-columns: 80px auto;
-  grid-template-rows: 60px auto;
-  grid-template-areas:
-    'nav header'
-    'nav main';
+  grid-template-rows: 56px 1fr;
+  grid-template-columns: 60px minmax(200px, 800px) minmax(20px, auto);
+  row-gap: 50px;
 
-  nav {
-    grid-area: nav;
-    grid-area: nav;
-    background: #01134e;
+  .toggleTab {
+    grid-column-start: 2;
+    grid-column-end: 2;
     display: grid;
-    grid-template-rows: 60px auto;
+    grid-template-columns: 1fr 1fr;
     align-items: center;
+    justify-items: center;
 
-
-    a {
-      justify-self: center;
-    }
-
-    div {
-      display: grid;
-
-      ul {
-        display: grid;
-        height: 570px;
-        align-self: center;
-        grid-template-rows: repeat(4, 75px);
-        justify-content: center;
-        align-items: center;
-
-        
-        li {
-          width: 80px;
-          height: 100%;
-          display: grid;
-          justify-content: center;
-          align-content: center;
-          position: relative;
-        }
-      }
-
-        .activeLink::before{
-          content: '';
-          position: absolute;
-          top: 0;
-          left: 0;
-          height: 100%;
-          width: 4px;
-          background: #0AD69C;
-        }
-    }
-  }
-
-  header {
-    grid-area: header;
-    background: #ffffff;
-    border-bottom: 1px solid #dae4f2;
-
-    a {
+    button {
+      width: 100%;
+      height: 100%;
+      border: none;
+      background: #ffffff;
+      cursor: pointer;
       font-family: 'Roboto';
       font-style: normal;
-      font-weight: 400;
-      font-size: 13px;
-      line-height: 15px;
-      letter-spacing: 0.685714px;
-      color: #252f48;
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 19px;
+      letter-spacing: 0.6px;
+      text-transform: uppercase;
+      color: #ccd0dc;
+      // color: #01134E;
+      transition: backgroung 0.2s ease-in-out;
+
+      &:hover {
+        background: lighten($color: #2a74db, $amount: 5%);
+      }
+      &:active {
+        background: darken($color: #2a74db, $amount: 5%);
+      }
+    }
+    .activeTab {
+      color: #01134e;
+      border-bottom: 2px solid #2a74db;
     }
   }
+}
 
-  main {
-    width: 1150px;
-    height: 570px;
-    background-color: #dae4f2;
-    align-self: center;
-    justify-self: center;
+@media screen and (max-width: 920px) {
+  .profileWrapper {
+    display: grid;
+    grid-template-columns: 20px 1fr 20px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .profileWrapper {
+    row-gap: 20px;
+    .toggleTab {
+      button {
+        font-size: 12px;
+      }
+    }
   }
 }
