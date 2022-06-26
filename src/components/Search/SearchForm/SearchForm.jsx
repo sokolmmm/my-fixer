@@ -65,7 +65,7 @@ function SearchForm() {
           </div>
 
           <div className={styles.formControl}>
-            <label htmlFor="service">Category</label>
+            <label htmlFor="service">Service</label>
             <div className={styles.selectWrapper}>
               <Field as="select" id="service" name="service">
                 {service.map((el) => (

@@ -9,7 +9,7 @@ function MainHeader({ history }) {
   return (
     <header className={styles.header}>
       <div className={styles.headerLogo}>
-        <NavLink to="/home">
+        <NavLink to="/">
           <LogoIcon />
         </NavLink>
       </div>
