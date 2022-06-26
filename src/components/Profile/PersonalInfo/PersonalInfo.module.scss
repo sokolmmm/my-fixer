@@ -1,3 +1,5 @@
+@import '../../../scss/mixin';
+
 .personalInformation {
   grid-column-start: 2;
   grid-column-end: 3;
@@ -10,11 +12,13 @@
     grid-template-rows: repeat(3, 60px);
     gap: 30px;
   }
+
   .thirdColumn {
     display: grid;
-    grid-template-rows: 60px 60px 60px 40px;
+    grid-template-rows: repeat(3, 60px) 40px;
     gap: 30px;
   }
+
   .photoBlock {
     display: grid;
     grid-template-rows: 136px auto;
@@ -35,6 +39,7 @@
       input[type='file'] {
         display: none;
       }
+
       label {
         cursor: pointer;
         display: grid;
@@ -42,6 +47,7 @@
         align-items: center;
         grid-template-columns: 10px 1fr;
       }
+
       img {
         width: 10px;
         height: 10px;
@@ -67,92 +73,37 @@
 
   .formControl {
     display: grid;
+
     label {
-      font-family: 'Roboto';
-      font-style: normal;
-      font-weight: 500;
-      font-size: 12px;
-      line-height: 14px;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-
-      color: #546087;
+      @include label;
     }
-  }
-
-  select {
-    box-sizing: border-box;
-    -moz-appearance: none;
-    -webkit-appearance: none;
-    appearance: none;
-    background-color: transparent;
-    border: none;
-    outline: none;
-
-    border: 2px solid #f2f2f2;
-    border-radius: 2px;
-    background-color: #fcfcfc;
-
-    padding: 0 1rem;
-    cursor: pointer;
-
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 16px;
-    letter-spacing: 0.28px;
-    padding: 0 1rem;
-    color: #222428;
   }
 
   .selectWrapper {
-    position: relative;
-  }
-  .selectWrapper::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    right: 15px;
-
-    transform: translateY(-50%);
-
-    pointer-events: none;
-
-    width: 0;
-    height: 0;
-    border-style: solid;
-    border-width: 6px 5px 0 5px;
-    border-color: #01134e transparent transparent transparent;
+    @include select;
   }
 
-  //   select:hover {
-  //     border-left: 2px solid #2A74DB;
-  //   }
-}
+  @media screen and (max-width: 768px) {
+    .personalInformation {
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      padding-bottom: 20px;
 
-@media screen and (max-width: 768px) {
-  .personalInformation {
-    grid-template-columns: 1fr 1fr;
-    // justify-content: space-around;
-    gap: 40px;
-    padding-bottom: 20px;
-
-    .photoBlock {
-      grid-column-start: 1;
-      grid-column-end: 3;
+      .photoBlock {
+        grid-column-start: 1;
+        grid-column-end: 3;
+      }
     }
   }
-}
 
-@media screen and (max-width: 480px) {
-  .personalInformation {
-    grid-template-columns: 1fr;
-    // justify-content: space-around;
-    gap: 40px;
-    .photoBlock {
-      grid-column-start: 1;
-      grid-column-end: 2;
+  @media screen and (max-width: 480px) {
+    .personalInformation {
+      grid-template-columns: 1fr;
+      gap: 40px;
+      .photoBlock {
+        grid-column-start: 1;
+        grid-column-end: 2;
+      }
     }
   }
 }

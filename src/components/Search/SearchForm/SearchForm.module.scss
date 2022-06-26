@@ -1,0 +1,40 @@
+@import '../../../scss/mixin';
+
+.searchForm {
+  width: 100%;
+  display: grid;
+  grid-template-columns: minmax(20px, 1fr) minmax(150px, 250px) minmax(
+      20px,
+      1fr
+    );
+  grid-template-rows: repeat(4, 60px) 40px;
+  row-gap: 30px;
+  border-right: 1px solid #e7eaf5;
+
+  input,
+  select,
+  button {
+    width: 100%;
+    height: 40px;
+  }
+
+  .formControl,
+  button {
+    grid-column-start: 2;
+    display: grid;
+
+    label {
+      @include label;
+    }
+  }
+
+  .selectWrapper {
+    @include select;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .searchForm {
+    border-right: none;
+  }
+}

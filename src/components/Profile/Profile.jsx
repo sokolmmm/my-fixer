@@ -8,14 +8,15 @@ import AccountInfo from './AccountInfo/AccountInfo';
 
 function Profile() {
   const [activeTab, setActiveTab] = React.useState(true);
-  const setPersonalInfo = () => {
-    if (activeTab === false) {
+
+  const setPersonalInfoActive = () => {
+    if (!activeTab) {
       setActiveTab(true);
     }
   };
 
-  const setAccauntInfo = () => {
-    if (activeTab === true) {
+  const setAccauntInfoActive = () => {
+    if (activeTab) {
       setActiveTab(false);
     }
   };
@@ -24,22 +25,21 @@ function Profile() {
     <section className={styles.profileWrapper}>
       <div className={styles.toggleTab}>
         <button
-          onClick={setPersonalInfo}
+          onClick={setPersonalInfoActive}
           type="button"
           className={activeTab ? styles.activeTab : null}
-
         >
-          PERSONAL INFORMATION
+          Personal Information
         </button>
         <button
-          onClick={setAccauntInfo}
+          onClick={setAccauntInfoActive}
           type="button"
-          className={activeTab ? null : styles.activeTab}
+          className={!activeTab ? styles.activeTab : null}
         >
-          ACCOUNT INFORMATION
+          Account Information
         </button>
       </div>
-      { activeTab ? <PersonalInfo /> : <AccountInfo />}
+      {activeTab ? <PersonalInfo /> : <AccountInfo />}
     </section>
   );
 }

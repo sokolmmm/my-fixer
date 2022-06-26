@@ -80,6 +80,12 @@
   }
 }
 
+@media screen and (max-width: 1200px) {
+  .header {
+    grid-template-columns: 80px 20px minmax(640px, 1150px) minmax(20px, 1fr);
+  }
+}
+
 @media screen and (max-width: 768px) {
   .header {
     display: grid;
@@ -92,7 +98,7 @@
         fill: #01134e;
       }
     }
-    
+
     .headerContent {
       grid-column-start: 2;
       grid-column-end: 3;

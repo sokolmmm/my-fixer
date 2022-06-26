@@ -93,3 +93,30 @@ input {
     background: #ffffff;
   }
 }
+
+::-webkit-scrollbar {
+  width: 8px;
+  background: #ffffff;
+  border-radius: 50px;
+}
+
+::-webkit-scrollbar-track {
+  border-radius: 10px;
+  background: #f5f7fa;
+}
+
+::-webkit-scrollbar-thumb {
+  width: 6px;
+  background: #e0e6f0;
+  border-radius: 50px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #c7d0de;
+}
+
+html {
+  scrollbar-color: #c7d0de  #e0e6f0;
+  scrollbar-width: 50px;
+  scrollbar-track-color: #f5f7fa;
+}
