@@ -7,7 +7,7 @@ import avatar from '../../../assets/images/avatar.png';
 import countriesList from '../../../js/countriesList';
 import pencilImg from '../../../assets/images/pencil.svg';
 import styles from './PersonalInfo.module.scss';
-import GreenButton from '../../common/button/GreenButton/GreenButton';
+import GreenButton from '../../common/Buttons/GreenButton/GreenButton';
 
 const initialValues = {
   photo: '',
@@ -86,7 +86,7 @@ function PersonalInfo() {
                 name="company"
               />
             </div>
-            <GreenButton textBody="Done!" />
+            <GreenButton textBody="Save" />
           </div>
         </Form>
       )}

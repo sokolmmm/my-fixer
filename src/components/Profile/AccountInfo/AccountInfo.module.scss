@@ -1,3 +1,5 @@
+@import '../../../scss/mixin';
+
 .accountInfo {
   grid-column-start: 2;
   grid-column-end: 3;
@@ -23,31 +25,24 @@
 
   .formControl {
     display: grid;
-    label {
-      font-family: 'Roboto';
-      font-style: normal;
-      font-weight: 500;
-      font-size: 12px;
-      line-height: 14px;
-      letter-spacing: 1px;
-      text-transform: uppercase;
 
-      color: #546087;
+    label {
+      @include label;
     }
   }
 }
 
-  @media screen and (max-width: 768px) {
-    .accountInfo {
-      grid-template-columns: 1fr 1fr;
-      gap: 40px;
-      padding-bottom: 60px;
-      }
-    }
-
-  @media screen and (max-width: 480px) {
-    .accountInfo {
-      grid-template-columns: 1fr;
-      gap: 40px;
-    }
+@media screen and (max-width: 768px) {
+  .accountInfo {
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    padding-bottom: 60px;
   }
+}
+
+@media screen and (max-width: 480px) {
+  .accountInfo {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}

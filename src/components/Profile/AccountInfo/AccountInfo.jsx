@@ -4,7 +4,7 @@ import React from 'react';
 import { Field, Form, Formik } from 'formik';
 import * as Yup from 'yup';
 import styles from './AccountInfo.module.scss';
-import GreenButton from '../../common/button/GreenButton/GreenButton';
+import GreenButton from '../../common/Buttons/GreenButton/GreenButton';
 
 const initialValues = {
   userName: '',

@@ -9,7 +9,6 @@ import SearchIcon from '../Icons/SearchIcon';
 import styles from './Navbar.module.scss';
 
 function Navbar({ activeLink }) {
-  console.log(activeLink);
   return (
     <nav className={styles.navbar}>
       <ul>
