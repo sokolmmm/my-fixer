@@ -1,80 +1,62 @@
+@import '../../scss/mixin';
+@import '../../scss/variables';
+
 .profileWrapper {
-  height: 100vh;
-  display: grid;
-  grid-template-columns: 80px auto;
-  grid-template-rows: 60px auto;
-  grid-template-areas:
-    'nav header'
-    'nav main';
+  @include sectionWrapper;
 
-  nav {
-    grid-area: nav;
-    grid-area: nav;
-    background: #01134e;
+  grid-template-rows: 56px 1fr;
+  grid-template-columns: 60px minmax(200px, 800px) minmax(20px, auto);
+
+  .toggleTab {
+    grid-column-start: 2;
+    grid-column-end: 2;
     display: grid;
-    grid-template-rows: 60px auto;
+    grid-template-columns: 1fr 1fr;
     align-items: center;
+    justify-items: center;
 
+    button {
+      width: 100%;
+      height: 100%;
+      border: none;
+      background: $window-color;
+      cursor: pointer;
+      font-family: $primary-font;
+      font-weight: 700;
+      font-size: 1rem;
+      line-height: 1.1875rem;
+      letter-spacing: 0.6px;
+      text-transform: uppercase;
+      color: $inactive-color;
+      transition: backgroung 0.3s ease-in-out;
 
-    a {
-      justify-self: center;
-    }
-
-    div {
-      display: grid;
-
-      ul {
-        display: grid;
-        height: 570px;
-        align-self: center;
-        grid-template-rows: repeat(4, 75px);
-        justify-content: center;
-        align-items: center;
-
-        
-        li {
-          width: 80px;
-          height: 100%;
-          display: grid;
-          justify-content: center;
-          align-content: center;
-          position: relative;
-        }
+      &:hover {
+        background: lighten($color: $primary-color, $amount: 40%);
       }
-
-        .activeLink::before{
-          content: '';
-          position: absolute;
-          top: 0;
-          left: 0;
-          height: 100%;
-          width: 4px;
-          background: #0AD69C;
-        }
+      &:active {
+        background: darken($color: $primary-color, $amount: 45%);
+      }
+    }
+    .activeTab {
+      color: $primary-color;
+      border-bottom: 2px solid $primary-color;
     }
   }
+}
 
-  header {
-    grid-area: header;
-    background: #ffffff;
-    border-bottom: 1px solid #dae4f2;
-
-    a {
-      font-family: 'Roboto';
-      font-style: normal;
-      font-weight: 400;
-      font-size: 13px;
-      line-height: 15px;
-      letter-spacing: 0.685714px;
-      color: #252f48;
-    }
+@media screen and (max-width: 920px) {
+  .profileWrapper {
+    grid-template-columns: 1.25rem 1fr 1.25rem;
   }
+}
 
-  main {
-    width: 1150px;
-    height: 570px;
-    background-color: #dae4f2;
-    align-self: center;
-    justify-self: center;
+@media screen and (max-width: 480px) {
+  .profileWrapper {
+    row-gap: 1.25rem;
+    .toggleTab {
+      button {
+        font-size: 12px;
+      }
+    }
   }
 }

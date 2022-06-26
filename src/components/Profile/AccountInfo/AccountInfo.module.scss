@@ -1,0 +1,48 @@
+@import '../../../scss/mixin';
+
+.accountInfo {
+  grid-column-start: 2;
+  grid-column-end: 3;
+  display: grid;
+  grid-template-columns: minmax(200px, 280px) minmax(200px, 280px);
+  gap: 20px;
+
+  .firstColumn {
+    display: grid;
+    grid-template-rows: 60px;
+  }
+
+  .secondColumn {
+    display: grid;
+    grid-template-rows: 60px 40px;
+    gap: 30px;
+  }
+
+  input {
+    width: 100%;
+    height: 40px;
+  }
+
+  .formControl {
+    display: grid;
+
+    label {
+      @include label;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .accountInfo {
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    padding-bottom: 60px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .accountInfo {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}

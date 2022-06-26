@@ -1,0 +1,13 @@
+@import '../../scss/mixin';
+
+.searchWrapper {
+  @include sectionWrapper;
+  grid-template-columns: minmax(200px, 340px) 1fr;
+  padding: 20px 0;
+}
+
+@media screen and (max-width: 768px) {
+  .searchWrapper {
+    grid-template-columns: 1fr;
+  }
+}
