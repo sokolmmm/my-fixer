@@ -1,17 +1,17 @@
 import './App.scss';
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
-import SignInLayout from './components/Layout/SignInLayout/SignInLayout';
+import SignInLayout from './components/Layouts/SignInLayout/SignInLayout';
 import SignIn from './components/SignIn/SignIn/SignIn';
 import PassRecovery from './components/SignIn/PassRecovery/PassRecovery';
 import PassReset from './components/SignIn/PassReset/PassReset';
 import SignUp from './components/SignUp/SignUp/SignUp';
 import CompleteAccount from './components/SignUp/CompleteAccount/CompleteAccount';
 import ResetSuccessful from './components/SignIn/ResetSuccessful/ResetSuccessful';
-import MainLayout from './components/Layout/MainLayout/MainLayout';
+import MainLayout from './components/Layouts/MainLayout/MainLayout';
 import Profile from './components/Profile/Profile';
 import Search from './components/Search/Search';
-import SignUpLayout from './components/Layout/SignUpLayout/SignUpLayout';
+import SignUpLayout from './components/Layouts/SignUpLayout/SignUpLayout';
 import CompleteAccountSuccessful from './components/SignUp/CompleteAccountSuccessful/CompleteAccountSuccessful';
 
 function App() {
