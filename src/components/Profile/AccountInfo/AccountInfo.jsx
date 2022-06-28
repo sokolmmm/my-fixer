@@ -5,6 +5,7 @@ import { Field, Form, Formik } from 'formik';
 import * as Yup from 'yup';
 import styles from './AccountInfo.module.scss';
 import GreenButton from '../../common/Buttons/GreenButton/GreenButton';
+import FormikControl from '../../common/Forms/FormikControl/FormikControl';
 
 const initialValues = {
   userName: '',
@@ -22,10 +23,11 @@ function AccountInfo() {
       {(formik) => (
         <Form className={styles.accountInfo}>
           <div className={styles.firstColumn}>
-            <div className={styles.formControl}>
+            <FormikControl control="inputWithLabel" label="Label" name="userName" />
+            {/* <div className={styles.formControl}>
               <label htmlFor="userName">USERNAME</label>
               <Field type="text" id="userName" name="userName" />
-            </div>
+            </div> */}
           </div>
           <div className={styles.secondColumn}>
             <div className={styles.formControl}>

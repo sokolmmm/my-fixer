@@ -1,0 +1,42 @@
+.formControl {
+  display: grid;
+
+  input {
+    height: 2.5rem;
+    border: 2px solid #f2f2f2;
+    border-radius: 2px;
+    background-color: #fcfcfc;
+
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    letter-spacing: 0.28px;
+    padding: 0 1rem;
+    color: #222428;
+
+    &:placeholder-shown {
+      color: #222428;
+      font-weight: 400;
+      font-size: 0.875rem;
+      line-height: 1rem;
+      letter-spacing: 0.28px;
+    }
+
+    &:active,
+    &:focus {
+      outline: none;
+      border-left: 2px solid #2a74db;
+      background: #ffffff;
+    }
+  }
+  input {
+    width: 100%;
+    height: 40px;
+  }
+
+  label {
+    @include label;
+  }
+}
