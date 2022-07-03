@@ -1,10 +1,10 @@
-/* eslint-disable no-unused-vars */
 import {
-  ErrorMessage, Field, Form, Formik,
+  ErrorMessage, Form, Formik,
 } from 'formik';
 import React from 'react';
 import * as Yup from 'yup';
 import GreenButton from '../../../common/Buttons/GreenButton/GreenButton';
+import FormikControl from '../../../common/Forms/FormikControl/FormikControl';
 import TextError from '../../../common/Forms/TextError/TextError';
 import styles from './PassResetForm.module.scss';
 
@@ -23,26 +23,24 @@ const validationSchema = Yup.object({
 function PassResetForm() {
   return (
     <Formik initialValues={initialValues} validationSchema={validationSchema}>
-      {(formik) => (
+      {() => (
         <Form className={styles.passResetForm}>
-          <Field
+          <FormikControl
+            control="input"
             type="password"
-            id="password"
             name="password"
             placeholder="New password"
-            className={styles.password}
           />
 
           <div className={styles.errorPassword}>
             <ErrorMessage name="password" component={TextError} />
           </div>
 
-          <Field
+          <FormikControl
+            control="input"
             type="password"
-            id="confirmPassword"
             name="confirmPassword"
             placeholder="Confirm password"
-            className={styles.confirmPassword}
           />
 
           <div className={styles.errorConfirmPassword}>

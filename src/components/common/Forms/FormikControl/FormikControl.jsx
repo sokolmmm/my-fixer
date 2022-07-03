@@ -2,19 +2,29 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import React from 'react';
-import InputWithLabel from './InputWithLabel/InputWithLabel';
+import Checkbox from '../Checkbox/Checkbox';
+import Input from '../Input/Input';
+import InputFile from '../InputFile/InputFile';
+import InputWithLabel from '../InputWithLabel/InputWithLabel';
+import RadioButton from '../Radio/RadioButton';
+import Select from '../Select/Select';
 
 function FormikControl(props) {
   const { control, ...rest } = props;
+
   switch (control) {
+    case 'input':
+      return <Input {...rest} />;
     case 'inputWithLabel':
       return <InputWithLabel {...rest} />;
-    case 'textarea':
-      break;
+    case 'inputFile':
+      return <InputFile {...rest} />;
+    case 'checkbox':
+      return <Checkbox {...rest} />;
     case 'select':
-      break;
+      return <Select {...rest} />;
     case 'radio':
-      break;
+      return <RadioButton {...rest} />;
     default:
       return null;
   }

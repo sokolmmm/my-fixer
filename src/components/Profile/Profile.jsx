@@ -1,45 +1,45 @@
+/* eslint-disable react/no-unstable-nested-components */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable max-len */
 /* eslint-disable no-unused-vars */
 import React from 'react';
+import { Outlet, useLocation } from 'react-router-dom';
+import ToggleTab from '../common/Links/ToggleTab/ToggleTab';
 import styles from './Profile.module.scss';
-import PersonalInfo from './PersonalInfo/PersonalInfo';
-import AccountInfo from './AccountInfo/AccountInfo';
 
 function Profile() {
-  const [activeTab, setActiveTab] = React.useState(true);
+  const location = useLocation(0);
+  const [path, setPath] = React.useState(location.pathname);
+  const [currentPage, setCurrentPage] = React.useState('personal-info');
 
-  const setPersonalInfoActive = () => {
-    if (!activeTab) {
-      setActiveTab(true);
-    }
-  };
+  React.useEffect(() => {
+    setPath(location.pathname);
+  }, [location]);
 
-  const setAccauntInfoActive = () => {
-    if (activeTab) {
-      setActiveTab(false);
+  React.useEffect(() => {
+    if (path === '/profile/personal-info') {
+      setCurrentPage('personal-info');
+    } else if (path === '/profile/account-info') {
+      setCurrentPage('account-info');
     }
-  };
+  }, [path]);
 
   return (
     <section className={styles.profileWrapper}>
-      <div className={styles.toggleTab}>
-        <button
-          onClick={setPersonalInfoActive}
-          type="button"
-          className={activeTab ? styles.activeTab : null}
-        >
-          Personal Information
-        </button>
-        <button
-          onClick={setAccauntInfoActive}
-          type="button"
-          className={!activeTab ? styles.activeTab : null}
-        >
-          Account Information
-        </button>
+      <div className={styles.toggleTabs}>
+        <ToggleTab
+          linkPath="personal-info"
+          linkText="Personal Information"
+          isActive={currentPage === 'personal-info'}
+        />
+
+        <ToggleTab
+          linkPath="account-info"
+          linkText="Account Information"
+          isActive={currentPage === 'account-info'}
+        />
       </div>
-      {activeTab ? <PersonalInfo /> : <AccountInfo />}
+      <Outlet />
     </section>
   );
 }

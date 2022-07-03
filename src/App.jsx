@@ -13,6 +13,8 @@ import Profile from './components/Profile/Profile';
 import Search from './components/Search/Search';
 import SignUpLayout from './components/Layouts/SignUpLayout/SignUpLayout';
 import CompleteAccountSuccessful from './components/SignUp/CompleteAccountSuccessful/CompleteAccountSuccessful';
+import AccountInfo from './components/Profile/AccountInfo/AccountInfo';
+import PersonalInfo from './components/Profile/PersonalInfo/PersonalInfo';
 
 function App() {
   return (
@@ -30,7 +32,10 @@ function App() {
           <Route path="complete-account-successful" element={<CompleteAccountSuccessful />} />
         </Route>
         <Route path="/" element={<MainLayout />}>
-          <Route path="profile" element={<Profile />} />
+          <Route path="profile" element={<Profile />}>
+            <Route path="account-info" element={<AccountInfo />} />
+            <Route path="personal-info" element={<PersonalInfo />} />
+          </Route>
           <Route path="search" element={<Search />} />
         </Route>
       </Routes>

@@ -16,14 +16,6 @@ main {
   grid-template-columns: 1fr minmax(570px, 1150px) 1fr;
   grid-template-rows: minmax(20px, 1fr) 570px minmax(20px, 1fr);
 
-  // align-items: center;
-  section {
-    // background: #ffffff;
-    // grid-column-start: 2;
-    // grid-column-end: 3;
-    // grid-row-start: 2;
-    // grid-row-end: 3;
-  }
 }
 
 @media screen and (max-width: 1200px) {

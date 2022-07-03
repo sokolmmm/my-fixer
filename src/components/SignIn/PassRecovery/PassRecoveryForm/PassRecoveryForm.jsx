@@ -1,10 +1,10 @@
-/* eslint-disable no-unused-vars */
 import {
-  ErrorMessage, Field, Form, Formik,
+  ErrorMessage, Form, Formik,
 } from 'formik';
 import React from 'react';
 import * as Yup from 'yup';
 import GreenButton from '../../../common/Buttons/GreenButton/GreenButton';
+import FormikControl from '../../../common/Forms/FormikControl/FormikControl';
 import TextError from '../../../common/Forms/TextError/TextError';
 import styles from './PassRecoveryForm.module.scss';
 
@@ -19,11 +19,11 @@ const validationSchema = Yup.object({
 function PassRecoveryForm() {
   return (
     <Formik initialValues={initialValues} validationSchema={validationSchema}>
-      {(formik) => (
+      {() => (
         <Form className={styles.passRecoveryForm}>
-          <Field
+          <FormikControl
+            control="input"
             type="email"
-            id="email"
             name="email"
             placeholder="E-mail"
           />

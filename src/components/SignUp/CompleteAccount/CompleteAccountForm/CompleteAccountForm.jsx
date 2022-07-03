@@ -10,6 +10,7 @@ import GreenButton from '../../../common/Buttons/GreenButton/GreenButton';
 import TextError from '../../../common/Forms/TextError/TextError';
 import styles from './CompleteAccountForm.module.scss';
 import recaptcha from '../../../../assets/images/recaptcha.png';
+import FormikControl from '../../../common/Forms/FormikControl/FormikControl';
 
 const initialValues = {
   password: '',
@@ -30,9 +31,9 @@ function CompleteAccountForm() {
     <Formik initialValues={initialValues} validationSchema={validationSchema}>
       {(formik) => (
         <Form className={styles.completeAccountForm}>
-          <Field
+          <FormikControl
+            control="input"
             type="password"
-            id="password"
             name="password"
             placeholder="Create a password"
           />
@@ -43,9 +44,9 @@ function CompleteAccountForm() {
             <span> </span>
           </div>
 
-          <Field
+          <FormikControl
+            control="input"
             type="password"
-            id="confirmPassword"
             name="confirmPassword"
             placeholder="Confirm password"
           />
@@ -53,26 +54,23 @@ function CompleteAccountForm() {
           <div>
             <ErrorMessage name="confirmPassword" component={TextError} />
           </div>
+          <div className={styles.checkboxGroup}>
+            <FormikControl
+              control="checkbox"
+              name="termsService"
+              label="I agree to the myFixer.com"
+            />
+            <a href="s">Terms of Service</a>
+          </div>
 
-          <label htmlFor="termsService" className={styles.checkboxLabel}>
-            <Field type="checkbox" id="termsService" name="termsService" />
-            <span className={styles.custom}> </span>
-            <span className={styles.text}>
-              I agree to the myFixer.com
-              {' '}
-              <a href="s">Terms of Service</a>
-            </span>
-          </label>
-
-          <label htmlFor="privacyPolicy" className={styles.checkboxLabel}>
-            <Field type="checkbox" id="privacyPolicy" name="privacyPolicy" />
-            <span className={styles.custom}> </span>
-            <span className={styles.text}>
-              I agree to the myFixer.com
-              {' '}
-              <a href="s">Privacy Policy </a>
-            </span>
-          </label>
+          <div className={styles.checkboxGroup}>
+            <FormikControl
+              control="checkbox"
+              name="privacyPolicy"
+              label="I agree to the myFixer.com"
+            />
+            <a href="s">Privacy Policy</a>
+          </div>
 
           <figure>
             <img src={recaptcha} alt="recaptcha" />
