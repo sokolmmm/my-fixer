@@ -1,11 +1,12 @@
-/* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable no-unused-vars */
 import React from 'react';
 import { Field, Form, Formik } from 'formik';
 import * as Yup from 'yup';
 import styles from './SearchForm.module.scss';
 import GreenButton from '../../common/Buttons/GreenButton/GreenButton';
-import countriesList from '../../../js/countriesList';
+import searchCountries from '../../../helpers/constants/searchCountries';
+import FormikControl from '../../common/Forms/FormikControl/FormikControl';
+import searchCategories from '../../../helpers/constants/searchCategories';
 
 const initialValues = {
   location: '',
@@ -20,62 +21,36 @@ const validationSchema = Yup.object({
   email: Yup.string().email('Invalid email address').required('Required'),
 });
 
-const category = ['ReactJS', 'NodeJS', 'Django'];
-const service = ['one', 'two', 'three'];
-
 function SearchForm() {
   return (
     <Formik initialValues={initialValues} validationSchema={validationSchema}>
       {(formik) => (
         <Form className={styles.searchForm}>
-          <div className={styles.formControl}>
-            <label htmlFor="location">Location</label>
-            <div className={styles.selectWrapper}>
-              <Field as="select" id="location" name="location">
-                {countriesList.map((el) => (
-                  <option value={el.Name} key={el.Code}>
-                    {el.Name}
-                  </option>
-                ))}
-              </Field>
-            </div>
-          </div>
+          <FormikControl
+            control="select"
+            label="Location"
+            name="location"
+            options={searchCountries}
+            optionValue="name"
+            optionKey="code"
+          />
 
-          <div className={styles.formControl}>
-            <label htmlFor="search">Search</label>
-            <Field
-              type="text"
-              id="search"
-              name="search"
-              placeholder="Type your query..."
-            />
-          </div>
+          <FormikControl
+            control="inputWithLabel"
+            type="text"
+            label="Search"
+            name="search"
+            placeholder="Type your query..."
+          />
 
-          <div className={styles.formControl}>
-            <label htmlFor="category">Category</label>
-            <div className={styles.selectWrapper}>
-              <Field as="select" id="category" name="category">
-                {category.map((el) => (
-                  <option value={el} key={el}>
-                    {el}
-                  </option>
-                ))}
-              </Field>
-            </div>
-          </div>
-
-          <div className={styles.formControl}>
-            <label htmlFor="service">Category</label>
-            <div className={styles.selectWrapper}>
-              <Field as="select" id="service" name="service">
-                {service.map((el) => (
-                  <option value={el} key={el}>
-                    {el}
-                  </option>
-                ))}
-              </Field>
-            </div>
-          </div>
+          <FormikControl
+            control="select"
+            label="Category"
+            name="category"
+            options={searchCategories}
+            optionValue="value"
+            optionKey="id"
+          />
 
           <GreenButton textBody="Search" />
         </Form>

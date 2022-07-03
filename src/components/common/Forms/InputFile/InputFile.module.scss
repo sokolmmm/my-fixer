@@ -1,0 +1,32 @@
+.formControl {
+  width: 100px;
+  display: grid;
+  justify-items: center;
+  
+  input[type='file'] {
+    display: none;
+  }
+
+  label {
+    cursor: pointer;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    grid-template-columns: 10px 1fr;
+  }
+
+  img {
+    width: 10px;
+    height: 10px;
+  }
+
+  span {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14px;
+    letter-spacing: 0.28px;
+    color: #35373b;
+  }
+}

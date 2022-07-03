@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import LogoIcon from '../../Icons/LogoIcon';
+import LogoIcon from '../../Icons/LogoIcon/LogoIcon';
 import styles from './MainHeader.module.scss';
 import avatar from '../../../../assets/images/avatar.png';
 
@@ -9,7 +9,7 @@ function MainHeader({ history }) {
   return (
     <header className={styles.header}>
       <div className={styles.headerLogo}>
-        <NavLink to="/home">
+        <NavLink to="/">
           <LogoIcon />
         </NavLink>
       </div>

@@ -6,6 +6,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import * as Yup from 'yup';
 import GreenButton from '../../../common/Buttons/GreenButton/GreenButton';
+import FormikControl from '../../../common/Forms/FormikControl/FormikControl';
 import TextError from '../../../common/Forms/TextError/TextError';
 import styles from './SignUpForm.module.scss';
 
@@ -29,21 +30,22 @@ function SignUpForm() {
       {(formik) => (
         <Form className={styles.signUpForm}>
           <div className={styles.nameGroup}>
-            <Field
+            <FormikControl
+              control="input"
               type="text"
-              id="firstName"
               name="firstName"
               placeholder="First name"
             />
 
-            <Field
+            <FormikControl
+              control="input"
               type="text"
-              id="lastName"
               name="lastName"
               placeholder="Last name"
             />
+
           </div>
-          <div className={styles.errornameGroup}>
+          <div className={styles.errorNameGroup}>
             <div>
               <ErrorMessage name="firstName" component={TextError} />
             </div>
@@ -52,23 +54,22 @@ function SignUpForm() {
               <ErrorMessage name="lastName" component={TextError} />
             </div>
           </div>
-
-          <Field
+          <FormikControl
+            control="input"
             type="text"
-            id="userName"
             name="userName"
-            placeholder="Username "
+            placeholder="Username"
           />
 
           <div>
             <ErrorMessage name="userName" component={TextError} />
           </div>
 
-          <Field
+          <FormikControl
+            control="input"
             type="email"
-            id="email"
             name="email"
-            placeholder="E-mail "
+            placeholder="E-mail"
           />
 
           <div>
