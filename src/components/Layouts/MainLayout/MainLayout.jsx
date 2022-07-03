@@ -8,7 +8,7 @@ function MainLayout() {
   const location = useLocation(0);
   const [path, setPath] = React.useState(location.pathname);
   const [headerHistory, setHeaderHistory] = React.useState([]);
-  const [activeLink, setActiveLink] = React.useState();
+  const [currentPage, setCurrentPage] = React.useState();
   const [data] = React.useState([
     ['Home', 'Profile'],
     ['Home', 'Search'],
@@ -21,24 +21,24 @@ function MainLayout() {
   }, [location]);
 
   React.useEffect(() => {
-    if (path === '/profile') {
+    if (path.includes('/profile')) {
       setHeaderHistory(data[0]);
-      setActiveLink('profile');
+      setCurrentPage('profile');
     } else if (path === '/search') {
       setHeaderHistory(data[1]);
-      setActiveLink('search');
+      setCurrentPage('search');
     } else if (path === '/messages') {
       setHeaderHistory(data[2]);
-      setActiveLink('messages');
+      setCurrentPage('messages');
     } else if (path === '/calendar') {
       setHeaderHistory(data[3]);
-      setActiveLink('calendar');
+      setCurrentPage('calendar');
     }
   }, [path]);
   return (
     <div className={styles.wrapper}>
       <MainHeader history={headerHistory} />
-      <Navbar activeLink={activeLink} />
+      <Navbar currentPage={currentPage} />
       <main>
         <Outlet />
       </main>

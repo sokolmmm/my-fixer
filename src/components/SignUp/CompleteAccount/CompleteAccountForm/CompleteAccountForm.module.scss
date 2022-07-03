@@ -21,52 +21,6 @@
   }
 }
 
-.checkboxLabel {
-  display: grid;
-  grid-template-columns: 2.25rem auto;
-  align-content: center;
-
-  .text {
-    font-weight: 300;
-    font-size: 14px;
-    line-height: 16px;
-    letter-spacing: 0.28px;
-    align-self: center;
-  }
-
-  span {
-    color: #222428;
-  }
-
-  input {
-    display: none;
-  }
-
-  .custom {
-    display: block;
-    width: 1.5rem;
-    height: 1.5rem;
-    background: #ffffff;
-    border: 2px solid #f2f2f2;
-    border-radius: 2px;
-    transition: 0.2s;
-    cursor: pointer;
-    position: relative;
-    display: grid;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .custom::before {
-    content: url('../../../../assets/images/checkbox_checked.svg');
-    opacity: 0;
-  }
-
-  input:checked + .custom::before {
-    opacity: 1;
-  }
-}
-
 img {
   height: 60px;
   width: 210px;
@@ -77,8 +31,12 @@ img {
     grid-template-rows: 2.5rem 2rem 2.5rem 2rem 2.5rem 2.5rem 5rem 3rem;
   }
 
-  .text {
+  .checkboxGroup {
     display: grid;
     grid-template-rows: 1fr 1fr;
+
+    a {
+      padding-left: 30px;
+    }
   }
 }

@@ -2,34 +2,34 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import CalendarIcon from '../Icons/CalendarIcon';
-import MessagesIcon from '../Icons/MessagesIcon';
-import ProfileIcon from '../Icons/ProfileIcon';
-import SearchIcon from '../Icons/SearchIcon';
+import CalendarIcon from '../Icons/CalendarIcon/CalendarIcon';
+import MessagesIcon from '../Icons/MessagesIcon/MessagesIcon';
+import ProfileIcon from '../Icons/ProfileIcon/ProfileIcon';
+import SearchIcon from '../Icons/SearchIcon/SearchIcon';
 import styles from './Navbar.module.scss';
 
-function Navbar({ activeLink }) {
+function Navbar({ currentPage }) {
   return (
     <nav className={styles.navbar}>
       <ul>
-        <li className={activeLink === 'profile' ? styles.activeLink : null}>
-          <NavLink to="/profile">
-            <ProfileIcon />
+        <li className={currentPage === 'profile' ? styles.activeLink : null}>
+          <NavLink to="/profile/personal-info">
+            <ProfileIcon isActive={currentPage === 'profile'} />
           </NavLink>
         </li>
-        <li className={activeLink === 'search' ? styles.activeLink : null}>
+        <li className={currentPage === 'search' ? styles.activeLink : null}>
           <NavLink to="/search">
-            <SearchIcon />
+            <SearchIcon isActive={currentPage === 'search'} />
           </NavLink>
         </li>
-        <li className={activeLink === 'messages' ? styles.activeLink : null}>
+        <li className={currentPage === 'messages' ? styles.activeLink : null}>
           <NavLink to="/messages">
-            <MessagesIcon />
+            <MessagesIcon isActive={currentPage === 'messages'} />
           </NavLink>
         </li>
-        <li className={activeLink === 'calendar' ? styles.activeLink : null}>
+        <li className={currentPage === 'calendar' ? styles.activeLink : null}>
           <NavLink to="/calendar">
-            <CalendarIcon />
+            <CalendarIcon isActive={currentPage === 'calendar'} />
           </NavLink>
         </li>
       </ul>

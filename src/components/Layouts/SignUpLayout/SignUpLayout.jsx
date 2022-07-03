@@ -8,7 +8,6 @@ import styles from './SignUpLayout.module.scss';
 function SignUpLayout() {
   const location = useLocation(0);
   const [path, setPath] = React.useState(location.pathname);
-  const [headerData, setHeaderData] = React.useState();
   const [data] = React.useState([
     {
       spanText: 'Already have an account?',
@@ -16,6 +15,12 @@ function SignUpLayout() {
       linkHref: '/signin',
     },
   ]);
+
+  const [headerData, setHeaderData] = React.useState({
+    spanText: '',
+    linkText: '',
+    linkHref: '',
+  });
 
   React.useEffect(() => {
     setPath(location.pathname);
@@ -32,19 +37,13 @@ function SignUpLayout() {
   }, [path]);
 
   return (
-    <div>
-      {headerData ? (
-        <div className={styles.signUpWrapper}>
-          <LoginHeader
-            spanText={headerData.spanText}
-            linkText={headerData.linkText}
-            linkHref={headerData.linkHref}
-          />
-          <Outlet />
-        </div>
-      ) : (
-        <div>Preloader</div>
-      )}
+    <div className={styles.signUpWrapper}>
+      <LoginHeader
+        spanText={headerData.spanText}
+        linkText={headerData.linkText}
+        linkHref={headerData.linkHref}
+      />
+      <Outlet />
     </div>
   );
 }

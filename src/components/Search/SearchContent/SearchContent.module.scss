@@ -1,0 +1,38 @@
+@import '../../../scss/mixin';
+
+.searchContent {
+  display: grid;
+  grid-template-rows: 50px 1fr;
+  grid-template-columns: minmax(230px, 300px) minmax(270px, 330px);
+  gap: 20px;
+  padding: 0 40px;
+  overflow-y: auto;
+
+  .filterForm {
+    grid-column-start: 1;
+    grid-column-end: 3;
+    display: grid;
+    grid-template-columns: 100px 100px;
+    gap: 20px;
+    align-items: center;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .searchContent {
+    grid-template-columns: minmax(230px, 330px);
+    padding: 0 20px 20px 20px;
+    .filterForm {
+      grid-column-start: 1;
+      grid-column-end: 2;
+    }
+  }
+}
+@media screen and (max-width: 768px) {
+  .searchContent {
+    grid-template-columns: minmax(230px, 600px);
+    grid-template-rows: auto;
+    overflow-y: auto;
+    justify-self: center;
+  }
+}

@@ -2,10 +2,7 @@
   grid-area: header;
   background: #ffffff;
   display: grid;
-  grid-template-columns: 80px minmax(20px, 100px) minmax(640px, 1150px) minmax(
-      20px,
-      1fr
-    );
+  grid-template-columns: 80px 20px minmax(640px, 1fr) 20px;
 
   .headerLogo {
     background: #01134e;
@@ -93,10 +90,6 @@
 
     .headerLogo {
       background: #ffffff;
-
-      path {
-        fill: #01134e;
-      }
     }
 
     .headerContent {
