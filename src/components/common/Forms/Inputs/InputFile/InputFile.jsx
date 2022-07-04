@@ -4,7 +4,7 @@
 import { Field } from 'formik';
 import React from 'react';
 import styles from './InputFile.module.scss';
-import pencilImg from '../../../../assets/images/pencil.svg';
+import pencilImg from '../../../../../assets/images/pencil.svg';
 
 function InputFile(props) {
   const {

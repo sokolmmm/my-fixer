@@ -3,11 +3,13 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import Checkbox from '../Checkbox/Checkbox';
-import Input from '../Input/Input';
-import InputFile from '../InputFile/InputFile';
-import InputWithLabel from '../InputWithLabel/InputWithLabel';
+import DependetInput from '../Inputs/DependentInput/DependentInput';
+import Input from '../Inputs/Input/Input';
+import InputFile from '../Inputs/InputFile/InputFile';
+import InputWithLabel from '../Inputs/InputWithLabel/InputWithLabel';
 import RadioButton from '../Radio/RadioButton';
-import Select from '../Select/Select';
+import DependetSelect from '../Selects/DependentSelect/DependentSelect';
+import SelectWithLabel from '../Selects/SelectWithLabel/SelectWithLabel';
 
 function FormikControl(props) {
   const { control, ...rest } = props;
@@ -21,10 +23,14 @@ function FormikControl(props) {
       return <InputFile {...rest} />;
     case 'checkbox':
       return <Checkbox {...rest} />;
-    case 'select':
-      return <Select {...rest} />;
+    case 'dependentSelect':
+      return <DependetSelect {...rest} />;
+    case 'selectWithLabel':
+      return <SelectWithLabel {...rest} />;
     case 'radio':
       return <RadioButton {...rest} />;
+    case 'dependentInput':
+      return <DependetInput {...rest} />;
     default:
       return null;
   }

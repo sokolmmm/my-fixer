@@ -3,9 +3,9 @@
 /* eslint-disable react/prop-types */
 import { Field } from 'formik';
 import React from 'react';
-import styles from './Select.module.scss';
+import styles from './SelectWithLabel.module.scss';
 
-function Select(props) {
+function SelectWithLabel(props) {
   const {
     label, name, options, optionValue, optionKey, ...rest
   } = props;
@@ -26,4 +26,4 @@ function Select(props) {
   );
 }
 
-export default Select;
+export default SelectWithLabel;

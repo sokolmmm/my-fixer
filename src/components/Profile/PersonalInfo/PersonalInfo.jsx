@@ -1,9 +1,8 @@
-/* eslint-disable no-unused-vars */
 import React from 'react';
 import { Form, Formik } from 'formik';
 import * as Yup from 'yup';
+import CountryList from 'country-list-with-dial-code-and-flag';
 import avatar from '../../../assets/images/avatar.png';
-import searchCountries from '../../../helpers/constants/searchCountries';
 import styles from './PersonalInfo.module.scss';
 import GreenButton from '../../common/Buttons/GreenButton/GreenButton';
 import FormikControl from '../../common/Forms/FormikControl/FormikControl';
@@ -15,6 +14,7 @@ const initialValues = {
   lastName: '',
   title: '',
   country: '',
+  dialCode: '',
   mobilePhone: '',
   company: '',
 };
@@ -26,7 +26,7 @@ const validationSchema = Yup.object({
 function PersonalInfo() {
   return (
     <Formik initialValues={initialValues} validationSchema={validationSchema}>
-      {(formik) => (
+      {() => (
         <Form className={styles.personalInformation}>
           <div className={styles.firstColumn}>
             <img className={styles.avatar} src={avatar} alt="avatar" />
@@ -53,7 +53,7 @@ function PersonalInfo() {
             />
 
             <FormikControl
-              control="select"
+              control="selectWithLabel"
               label="Title"
               name="title"
               options={searchTitle}
@@ -63,20 +63,37 @@ function PersonalInfo() {
           </div>
           <div className={styles.thirdColumn}>
             <FormikControl
-              control="select"
+              control="selectWithLabel"
               label="Country"
               name="country"
-              options={searchCountries}
+              options={CountryList}
               optionValue="name"
               optionKey="code"
             />
+            <div className={styles.numberBlock}>
+              <span> Phone Number</span>
+              <FormikControl
+                control="dependentSelect"
+                label="Phone"
+                name="dialCode"
+                options={CountryList}
+                optionKey="code"
+                optionValue="flag"
+                mainField="country"
+                mainFieldKey="name"
 
-            <FormikControl
-              control="inputWithLabel"
-              type="tel"
-              label="Mobile Phone"
-              name="mobilePhone"
-            />
+              />
+
+              <FormikControl
+                control="dependentInput"
+                type="tel"
+                name="mobilePhone"
+                items={CountryList}
+                mainField="dialCode"
+                mainFieldKey="flag"
+                dependentFieldKey="dial_code"
+              />
+            </div>
 
             <FormikControl
               control="inputWithLabel"
