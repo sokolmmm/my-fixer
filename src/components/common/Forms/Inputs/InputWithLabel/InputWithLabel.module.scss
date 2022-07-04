@@ -1,0 +1,13 @@
+@import '../../../../../scss/mixin';
+
+.formControl {
+  display: grid;
+
+  input {
+    @include input;
+  }
+
+  label {
+    @include label;
+  }
+}

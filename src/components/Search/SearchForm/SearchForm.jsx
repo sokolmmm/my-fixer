@@ -1,6 +1,8 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
-import { Field, Form, Formik } from 'formik';
+import {
+  Field, Form, Formik, useFormikContext,
+} from 'formik';
 import * as Yup from 'yup';
 import styles from './SearchForm.module.scss';
 import GreenButton from '../../common/Buttons/GreenButton/GreenButton';
@@ -27,7 +29,7 @@ function SearchForm() {
       {(formik) => (
         <Form className={styles.searchForm}>
           <FormikControl
-            control="select"
+            control="selectWithLabel"
             label="Location"
             name="location"
             options={searchCountries}
@@ -44,7 +46,7 @@ function SearchForm() {
           />
 
           <FormikControl
-            control="select"
+            control="selectWithLabel"
             label="Category"
             name="category"
             options={searchCategories}
