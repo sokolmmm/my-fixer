@@ -15,6 +15,7 @@ import SignUpLayout from './components/Layouts/SignUpLayout/SignUpLayout';
 import CompleteAccountSuccessful from './components/SignUp/CompleteAccountSuccessful/CompleteAccountSuccessful';
 import AccountInfo from './components/Profile/AccountInfo/AccountInfo';
 import PersonalInfo from './components/Profile/PersonalInfo/PersonalInfo';
+import AdminZone from './components/AdminZone/AdminZone';
 
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
             <Route path="personal-info" element={<PersonalInfo />} />
           </Route>
           <Route path="search" element={<Search />} />
+          <Route path="admin-zone" element={<AdminZone />} />
         </Route>
       </Routes>
     </div>
