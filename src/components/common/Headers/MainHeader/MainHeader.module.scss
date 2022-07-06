@@ -24,7 +24,7 @@
   }
   .history {
     display: grid;
-    grid-template-columns: 70px 70px;
+    grid-template-columns: 70px minmax(70px, 140px);
     gap: 30px;
 
     span {

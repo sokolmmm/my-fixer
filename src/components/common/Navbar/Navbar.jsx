@@ -2,17 +2,63 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import AdminZoneIcon from '../Icons/AdminZoneIcon/AdminZoneIcon';
 import CalendarIcon from '../Icons/CalendarIcon/CalendarIcon';
 import MessagesIcon from '../Icons/MessagesIcon/MessagesIcon';
 import ProfileIcon from '../Icons/ProfileIcon/ProfileIcon';
 import SearchIcon from '../Icons/SearchIcon/SearchIcon';
 import styles from './Navbar.module.scss';
 
+const NavRet = [
+  {
+    page: 'profile',
+    link: '/profile/personal-info',
+    icon(currentPage) {
+      return <ProfileIcon isActive={currentPage === this.page} />;
+    },
+  },
+  {
+    page: 'search',
+    link: '/search',
+    icon(currentPage) {
+      return <SearchIcon isActive={currentPage === this.page} />;
+    },
+  },
+  {
+    page: 'messages',
+    link: '/messages',
+    icon(currentPage) {
+      return <MessagesIcon isActive={currentPage === this.page} />;
+    },
+  },
+  {
+    page: 'calendar',
+    link: '/admin-zone',
+    icon(currentPage) {
+      return <CalendarIcon isActive={currentPage === this.page} />;
+    },
+  },
+];
+
+const admin = [
+  {
+    page: 'admin-zone',
+    link: '/admin-zone',
+    icon: (currentPage) => (
+      <AdminZoneIcon isActive={currentPage === 'admin-zone'} />
+    ),
+  },
+];
 function Navbar({ currentPage }) {
   return (
     <nav className={styles.navbar}>
       <ul>
-        <li className={currentPage === 'profile' ? styles.activeLink : null}>
+        {(currentPage === 'admin-zone' ? admin : NavRet).map((el) => (
+          <li key={el.page} className={currentPage === el.page ? styles.activeLink : null}>
+            <NavLink to={el.link}>{el.icon(currentPage)}</NavLink>
+          </li>
+        ))}
+        {/* <li className={currentPage === 'profile' ? styles.activeLink : null}>
           <NavLink to="/profile/personal-info">
             <ProfileIcon isActive={currentPage === 'profile'} />
           </NavLink>
@@ -31,7 +77,7 @@ function Navbar({ currentPage }) {
           <NavLink to="/calendar">
             <CalendarIcon isActive={currentPage === 'calendar'} />
           </NavLink>
-        </li>
+        </li> */}
       </ul>
     </nav>
   );
