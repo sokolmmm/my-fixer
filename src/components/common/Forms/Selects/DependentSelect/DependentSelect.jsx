@@ -15,16 +15,16 @@ function DependetSelect(props) {
     ...rest
   } = props;
 
-  const { values, setFieldValue, touched } = useFormikContext();
+  const { values, setFieldValue } = useFormikContext();
 
   React.useEffect(() => {
-    if (values[mainField].trim() !== '' && touched[mainField]) {
+    if (values[mainField].trim() !== '') {
       const dependetValue = options.find(
         (el) => el[mainFieldKey] === values[mainField],
       )[optionValue];
       setFieldValue(name, dependetValue);
     }
-  }, [values[mainField], touched[mainField], setFieldValue, name]);
+  }, [values[mainField], setFieldValue, name]);
 
   return (
     <div className={styles.formControl}>

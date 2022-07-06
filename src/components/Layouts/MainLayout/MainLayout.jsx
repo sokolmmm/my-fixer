@@ -14,6 +14,7 @@ function MainLayout() {
     ['Home', 'Search'],
     ['Home', 'Messages'],
     ['Home', 'Calendar'],
+    ['Home', 'Manage users'],
   ]);
 
   React.useEffect(() => {
@@ -33,6 +34,9 @@ function MainLayout() {
     } else if (path === '/calendar') {
       setHeaderHistory(data[3]);
       setCurrentPage('calendar');
+    } else if (path === '/admin-zone') {
+      setHeaderHistory(data[4]);
+      setCurrentPage('admin-zone');
     }
   }, [path]);
   return (
