@@ -14,7 +14,7 @@
 
   .searchForm {
     display: grid;
-    grid-template-columns: 200px;
+    grid-template-columns: 220px;
     align-items: center;
     justify-content: end;
   }
@@ -147,9 +147,8 @@
 
 @media screen and (max-width: 580px) {
   .wrapper {
-
     .content {
-    overflow: hidden !important;
+      overflow: hidden !important;
     }
     .searchForm {
       padding: 0;
@@ -160,6 +159,16 @@
       gap: 20px;
       grid-template-columns: 1fr !important;
     }
+    .item {
+      box-shadow: -2px 9px 30px rgba(23, 31, 76, 0.06);
+      border-radius: 10px;
+      transition: 0.2s ease-in-out;
+      cursor: pointer;
 
+      &:hover {
+        box-shadow: 0px 20px 35px rgba(0, 0, 0, 0.06);
+        transform: translateY(-5px);
+      }
+    }
   }
 }

@@ -7,6 +7,7 @@ import DependetInput from '../Inputs/DependentInput/DependentInput';
 import Input from '../Inputs/Input/Input';
 import InputFile from '../Inputs/InputFile/InputFile';
 import InputWithLabel from '../Inputs/InputWithLabel/InputWithLabel';
+import SearchInput from '../Inputs/SearchInput/SearchInput';
 import RadioButton from '../Radio/RadioButton';
 import DependetSelect from '../Selects/DependentSelect/DependentSelect';
 import SelectWithLabel from '../Selects/SelectWithLabel/SelectWithLabel';
@@ -21,6 +22,8 @@ function FormikControl(props) {
       return <InputWithLabel {...rest} />;
     case 'inputFile':
       return <InputFile {...rest} />;
+    case 'searchInput':
+      return <SearchInput {...rest} />;
     case 'checkbox':
       return <Checkbox {...rest} />;
     case 'dependentSelect':

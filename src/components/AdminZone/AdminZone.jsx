@@ -15,8 +15,7 @@ function AdminZone() {
           {() => (
             <Form className={styles.searchForm}>
               <FormikControl
-                control="input"
-                type="text"
+                control="searchInput"
                 name="search"
                 placeholder="Type here to search..."
               />

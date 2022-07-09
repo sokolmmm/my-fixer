@@ -9,7 +9,7 @@ import ProfileIcon from '../Icons/ProfileIcon/ProfileIcon';
 import SearchIcon from '../Icons/SearchIcon/SearchIcon';
 import styles from './Navbar.module.scss';
 
-const NavRet = [
+const userLinksList = [
   {
     page: 'profile',
     link: '/profile/personal-info',
@@ -40,7 +40,7 @@ const NavRet = [
   },
 ];
 
-const admin = [
+const adminLinksList = [
   {
     page: 'admin-zone',
     link: '/admin-zone',
@@ -53,7 +53,7 @@ function Navbar({ currentPage }) {
   return (
     <nav className={styles.navbar}>
       <ul>
-        {(currentPage === 'admin-zone' ? admin : NavRet).map((el) => (
+        {(currentPage === 'admin-zone' ? adminLinksList : userLinksList).map((el) => (
           <li key={el.page} className={currentPage === el.page ? styles.activeLink : null}>
             <NavLink to={el.link}>{el.icon(currentPage)}</NavLink>
           </li>
