@@ -17,11 +17,15 @@
   letter-spacing: 0.6px;
   text-transform: uppercase;
   color: $inactive-color;
-  transition: backgroung 0.3s ease-in-out;
-
 }
 
 .activeTab {
   border-bottom: 2px solid $primary-color;
   color: $primary-color !important;
+}
+
+@media screen and (max-width: 480px) {
+  .toggleTab {
+    font-size: 0.8rem;
+  }
 }

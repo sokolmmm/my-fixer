@@ -3,9 +3,10 @@
 
 .profileWrapper {
   @include sectionWrapper;
+  row-gap:80px;
 
   grid-template-rows: 56px 1fr;
-  grid-template-columns: 60px minmax(200px, 800px) minmax(20px, auto);
+  grid-template-columns: minmax(1.25rem, 0.75fr) minmax(750px, 3fr) minmax(1.25rem, 0.75fr);
 
   .toggleTabs {
     grid-column-start: 2;
@@ -23,9 +24,14 @@
   }
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 768px) {
   .profileWrapper {
     row-gap: 1.25rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .profileWrapper {
     .toggleTab {
       button {
         font-size: 12px;
