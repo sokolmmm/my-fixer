@@ -9,9 +9,16 @@
     @include input;
     background: transparent;
     border: none;
+
+    &::placeholder {
+      color: #252f48;
+      mix-blend-mode: normal;
+      opacity: 0.4;
+    }
+
     &:active,
     &:focus {
-    border: none;
+      border: none;
     }
   }
 

@@ -1,7 +1,103 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import { Form, Formik } from 'formik';
 import React from 'react';
 import FormikControl from '../common/Forms/FormikControl/FormikControl';
 import styles from './AdminZone.module.scss';
+import TableHeader from './TableHeader/TableHeader';
+import UserItem from './UserItem/UserItem';
+
+const users = [
+  {
+    id: 1,
+    firstName: 'Misha',
+    lastName: 'Sokol',
+    location: 'Ukraine',
+    status: 'Expected',
+    rating: 'gold',
+    email: 'sokol.m.m@gmail.com',
+  },
+  {
+    id: 2,
+    firstName: 'Misha',
+    lastName: 'Sokol',
+    location: 'Ukraine',
+    status: 'Expected',
+    rating: 'gold',
+    email: 'sokol.m.m@gmail.com',
+  },
+  {
+    id: 3,
+    firstName: 'Misha',
+    lastName: 'Sokol',
+    location: 'Ukraine',
+    status: 'Expected',
+    rating: 'gold',
+    email: 'sokol.m.m@gmail.com',
+  },
+  {
+    id: 4,
+    firstName: 'Misha',
+    lastName: 'Sokol',
+    location: 'Ukraine',
+    status: 'Expected',
+    rating: 'gold',
+    email: 'sokol.m.m@gmail.com',
+  },
+  {
+    id: 5,
+    firstName: 'Misha',
+    lastName: 'Sokol',
+    location: 'Ukraine',
+    status: 'Expected',
+    rating: 'gold',
+    email: 'sokol.m.m@gmail.com',
+  },
+  {
+    id: 6,
+    firstName: 'Misha',
+    lastName: 'Sokol',
+    location: 'Ukraine',
+    status: 'Expected',
+    rating: 'gold',
+    email: 'sokol.m.m@gmail.com',
+  },
+  {
+    id: 7,
+    firstName: 'Misha',
+    lastName: 'Sokol',
+    location: 'Ukraine',
+    status: 'Expected',
+    rating: 'gold',
+    email: 'sokol.m.m@gmail.com',
+  },
+  {
+    id: 8,
+    firstName: 'Misha',
+    lastName: 'Sokol',
+    location: 'Ukraine',
+    status: 'Expected',
+    rating: 'gold',
+    email: 'sokol.m.m@gmail.com',
+  },
+  {
+    id: 9,
+    firstName: 'Misha',
+    lastName: 'Sokol',
+    location: 'Ukraine',
+    status: 'Expected',
+    rating: 'gold',
+    email: 'sokol.m.m@gmail.com',
+  },
+  {
+    id: 10,
+    firstName: 'Misha',
+    lastName: 'Sokol',
+    location: 'Ukraine',
+    status: 'Expected',
+    rating: 'gold',
+    email: 'sokol.m.m@gmail.com',
+  },
+];
 
 const initialValues = {
   search: '',
@@ -23,145 +119,22 @@ function AdminZone() {
           )}
         </Formik>
         <div className={styles.table}>
-          <ul className={styles.header}>
-            <li>First Name</li>
-            <li>Last Name</li>
-            <li>Country</li>
-            <li>Status</li>
-            <li>Level</li>
-            <li>E-mail</li>
-          </ul>
+          <TableHeader />
           <div className={styles.items}>
-            <ul className={styles.item}>
-              <li>Richard </li>
-              <li>Tiffany</li>
-              <li>Australia</li>
-              <li>Expected</li>
-              <li>Gold</li>
-              <li>rfrome@gmail.com</li>
-            </ul>
-
-            <ul className={styles.item}>
-              <li>Richard </li>
-              <li>Tiffany</li>
-              <li>Australia</li>
-              <li>Expected</li>
-              <li>Gold</li>
-              <li>rfrome@gmail.com</li>
-            </ul>
-
-            <ul className={styles.item}>
-              <li>Richard </li>
-              <li>Tiffany</li>
-              <li>Australia</li>
-              <li>Expected</li>
-              <li>Gold</li>
-              <li>rfrome@gmail.com</li>
-            </ul>
-
-            <ul className={styles.item}>
-              <li>Richard </li>
-              <li>Tiffany</li>
-              <li>Australia</li>
-              <li>Expected</li>
-              <li>Gold</li>
-              <li>rfrome@gmail.com</li>
-            </ul>
-
-            <ul className={styles.item}>
-              <li>Richard </li>
-              <li>Tiffany</li>
-              <li>Australia</li>
-              <li>Expected</li>
-              <li>Gold</li>
-              <li>rfrome@gmail.com</li>
-            </ul>
-
-            <ul className={styles.item}>
-              <li>Richard </li>
-              <li>Tiffany</li>
-              <li>Australia</li>
-              <li>Expected</li>
-              <li>Gold</li>
-              <li>rfrome@gmail.com</li>
-            </ul>
-
-            <ul className={styles.item}>
-              <li>Richard </li>
-              <li>Tiffany</li>
-              <li>Australia</li>
-              <li>Expected</li>
-              <li>Gold</li>
-              <li>rfrome@gmail.com</li>
-            </ul>
-
-            <ul className={styles.item}>
-              <li>Richard </li>
-              <li>Tiffany</li>
-              <li>Australia</li>
-              <li>Expected</li>
-              <li>Gold</li>
-              <li>rfrome@gmail.com</li>
-            </ul>
-
-            <ul className={styles.item}>
-              <li>Richard </li>
-              <li>Tiffany</li>
-              <li>Australia</li>
-              <li>Expected</li>
-              <li>Gold</li>
-              <li>rfrome@gmail.com</li>
-            </ul>
-
-            <ul className={styles.item}>
-              <li>Richard </li>
-              <li>Tiffany</li>
-              <li>Australia</li>
-              <li>Expected</li>
-              <li>Gold</li>
-              <li>rfrome@gmail.com</li>
-            </ul>
-
-            <ul className={styles.item}>
-              <li>Richard </li>
-              <li>Tiffany</li>
-              <li>Australia</li>
-              <li>Expected</li>
-              <li>Gold</li>
-              <li>rfrome@gmail.com</li>
-            </ul>
-
-            <ul className={styles.item}>
-              <li>Richard </li>
-              <li>Tiffany</li>
-              <li>Australia</li>
-              <li>Expected</li>
-              <li>Gold</li>
-              <li>rfrome@gmail.com</li>
-            </ul>
-
-            <ul className={styles.item}>
-              <li>Richard </li>
-              <li>Tiffany</li>
-              <li>Australia</li>
-              <li>Expected</li>
-              <li>Gold</li>
-              <li>rfrome@gmail.com</li>
-            </ul>
-
-            <ul className={styles.item}>
-              <li>Richard </li>
-              <li>Tiffany</li>
-              <li>Australia</li>
-              <li>Expected</li>
-              <li>Gold</li>
-              <li>rfrome@gmail.com</li>
-            </ul>
+            {users.map((el) => (
+              <UserItem
+                key={el.id}
+                firstName={el.firstName}
+                lastName={el.lastName}
+                location={el.location}
+                status={el.status}
+                rating={el.rating}
+                email={el.email}
+              />
+            ))}
           </div>
-
         </div>
       </div>
-
     </section>
   );
 }

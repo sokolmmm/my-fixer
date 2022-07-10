@@ -1,0 +1,78 @@
+.userItem {
+  padding: 0 10px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr) 0.8fr 0.8fr 1.5fr;
+  grid-template-rows: 54px;
+  align-items: center;
+  justify-items: start;
+
+  border-bottom: 1px solid #dae4f2;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 28px;
+
+  letter-spacing: -0.046704px;
+  color: #000000;
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+@media screen and (max-width: 920px) {
+  .userItem {
+    border: 1px solid #dae4f2 !important;
+    border-radius: 10px;
+    display: grid;
+    grid-template-rows: repeat(6, 30px);
+    grid-template-columns: 1fr;
+
+    li::before {
+      font-family: 'Roboto';
+      font-style: normal;
+      font-weight: 500;
+      font-size: 12px;
+      line-height: 14px;
+      letter-spacing: 0.6px;
+      text-transform: uppercase;
+      color: #01134e;
+    }
+
+    li:nth-child(1)::before {
+      content: 'First Name: ';
+    }
+
+    li:nth-child(2)::before {
+      content: 'Last Name: ';
+    }
+
+    li:nth-child(3)::before {
+      content: 'Country: ';
+    }
+    li:nth-child(4)::before {
+      content: 'Status: ';
+    }
+    li:nth-child(5)::before {
+      content: 'Level: ';
+    }
+    li:nth-child(6)::before {
+      content: 'E-mail: ';
+    }
+  }
+}
+
+@media screen and (max-width: 580px) {
+  .userItem {
+    box-shadow: -2px 9px 30px rgba(23, 31, 76, 0.06);
+    border-radius: 10px;
+    transition: 0.2s ease-in-out;
+    cursor: pointer;
+
+    &:hover {
+      box-shadow: 0px 20px 35px rgba(0, 0, 0, 0.06);
+      transform: translateY(-5px);
+    }
+  }
+}
