@@ -10,12 +10,15 @@
 
 main {
   // overflow-y: auto;
+  overflow-y: hidden;
   border-top: 1px solid #dee5f0;
   background: #eff1f4;
   display: grid;
-  grid-template-columns: 1fr minmax(570px, 1150px) 1fr;
-  grid-template-rows: minmax(20px, 1fr) 570px minmax(20px, 1fr);
-
+  grid-template-columns: minmax(20px, 0.5fr) minmax(1080px, 6fr) minmax(
+      20px,
+      0.5fr
+    );
+  grid-template-rows: minmax(20px, 0.5fr) minmax(500px, 6fr) minmax(20px, 0.5fr);
 }
 
 @media screen and (max-width: 1200px) {
