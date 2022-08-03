@@ -6,7 +6,7 @@
   row-gap:80px;
 
   grid-template-rows: 56px 1fr;
-  grid-template-columns: minmax(1.25rem, 0.75fr) minmax(750px, 3fr) minmax(1.25rem, 0.75fr);
+  grid-template-columns: minmax(1.25rem, 0.4fr) minmax(750px, 3fr) minmax(1.25rem, 1fr);
 
   .toggleTabs {
     grid-column-start: 2;

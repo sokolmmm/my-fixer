@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable no-unused-vars */
 import {
-  ErrorMessage, Field, Form, Formik,
+  ErrorMessage, Form, Formik, useFormikContext,
 } from 'formik';
 import React from 'react';
 import { NavLink } from 'react-router-dom';
@@ -9,7 +9,7 @@ import * as Yup from 'yup';
 import GreenButton from '../../../common/Buttons/GreenButton/GreenButton';
 import TextError from '../../../common/Forms/TextError/TextError';
 import styles from './CompleteAccountForm.module.scss';
-import recaptcha from '../../../../assets/images/recaptcha.png';
+import reCaptcha from '../../../../assets/images/re_captcha.png';
 import FormikControl from '../../../common/Forms/FormikControl/FormikControl';
 
 const initialValues = {
@@ -39,8 +39,26 @@ function CompleteAccountForm() {
           />
 
           <div className={styles.errorPassword}>
-            <span> </span>
-            <span> </span>
+            <span
+              className={
+                formik.values.password.match(/[0-9]$/g)
+                || formik.values.password.match(/[A]$/g)
+                  ? styles.red
+                  : null
+              }
+            >
+              {' '}
+            </span>
+            <span
+              className={
+                formik.values.password.match(/^[A-Z]/g)
+                && formik.values.password.length >= 5
+                  ? styles.red
+                  : null
+              }
+            >
+              {' '}
+            </span>
             <span> </span>
           </div>
 
@@ -60,7 +78,7 @@ function CompleteAccountForm() {
               name="termsService"
               label="I agree to the myFixer.com"
             />
-            <a href="s">Terms of Service</a>
+            <NavLink to="s">Terms of Service</NavLink>
           </div>
 
           <div className={styles.checkboxGroup}>
@@ -69,11 +87,11 @@ function CompleteAccountForm() {
               name="privacyPolicy"
               label="I agree to the myFixer.com"
             />
-            <a href="s">Privacy Policy</a>
+            <NavLink to="s">Privacy Policy</NavLink>
           </div>
 
           <figure>
-            <img src={recaptcha} alt="recaptcha" />
+            <img src={reCaptcha} alt="reCaptcha" />
           </figure>
 
           <GreenButton textBody="Get started" />
