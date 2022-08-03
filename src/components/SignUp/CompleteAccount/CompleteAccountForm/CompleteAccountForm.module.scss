@@ -15,8 +15,11 @@
       content: '';
       height: 6px;
       margin-top: 6px;
-      background: #38ecac;
       border-radius: 3px;
+      background: gray;
+    }
+    .red::after {
+      background: red;
     }
   }
 }

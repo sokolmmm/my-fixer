@@ -3,8 +3,8 @@
   grid-column-start: 2;
   grid-column-end: 3;
   display: grid;
-  grid-template-columns: 1.6fr minmax(200px, 3.5fr) minmax(200px, 3.5fr);
-  gap: 30px;
+  grid-template-columns: 136px minmax(200px, 3.5fr) minmax(200px, 3.5fr);
+  gap: 50px;
 
   .firstColumn {
     display: grid;
