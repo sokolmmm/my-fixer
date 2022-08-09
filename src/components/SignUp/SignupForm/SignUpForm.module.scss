@@ -1,0 +1,13 @@
+@import '../../../scss/mixin';
+
+.signUpForm {
+  @include windowForm;
+  grid-template-rows: 2.5rem 2rem 2.5rem 2rem 2.5rem 2rem 2.5rem;
+
+  .nameGroup,
+  .errorNameGroup {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 1.25rem;
+  }
+}

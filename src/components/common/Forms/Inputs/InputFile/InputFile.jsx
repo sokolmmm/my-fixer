@@ -8,14 +8,22 @@ import pencilImg from '../../../../../assets/images/pencil.svg';
 
 function InputFile(props) {
   const {
-    label, type, name, ...rest
+    label, type, name, setFieldValue, ...rest
   } = props;
   return (
     <div className={styles.formControl}>
       <label htmlFor={name}>
         <img src={pencilImg} alt="pencil" />
         <span>{label}</span>
-        <Field type="file" id={name} name={name} {...rest} />
+        <input
+          type="file"
+          id={name}
+          name={name}
+          onChange={(event) => {
+            setFieldValue(name, event.currentTarget.files[0]);
+          }}
+          {...rest}
+        />
       </label>
     </div>
   );

@@ -1,40 +1,69 @@
+/* eslint-disable no-unused-vars */
 import React from 'react';
-import { Form, Formik } from 'formik';
-import * as Yup from 'yup';
 import CountryList from 'country-list-with-dial-code-and-flag';
-import avatar from '../../../assets/images/avatar.png';
-import styles from './PersonalInfo.module.scss';
+import * as Yup from 'yup';
+
+import { Form, Formik } from 'formik';
+import { useSelector, useDispatch } from 'react-redux';
+
 import GreenButton from '../../common/Buttons/GreenButton/GreenButton';
 import FormikControl from '../../common/Forms/FormikControl/FormikControl';
+import avatar from '../../../assets/images/avatar.png';
+import styles from './PersonalInfo.module.scss';
 import searchTitle from '../../../helpers/constants/searchTitle';
 
-const initialValues = {
-  photo: '',
-  firstName: '',
-  lastName: '',
-  title: '',
-  country: '',
-  dialCode: '',
-  mobilePhone: '',
-  company: '',
-};
+import { updatePersonalInfo, updatePhoto } from '../../../redux/slices/userSlice';
+import Base64 from '../../../helpers/base64';
 
 const validationSchema = Yup.object({
   email: Yup.string().email('Invalid email address').required('Required'),
 });
 
 function PersonalInfo() {
+  const dispatch = useDispatch();
+  const { userData, error } = useSelector((state) => state.user);
+
+  const initialValues = {
+    photo: '',
+    firstName: userData.firstName,
+    lastName: userData.lastName,
+    email: userData.email,
+    country: userData.country || '',
+    phoneNumber: userData.phoneNumber || '',
+    title: userData.title || searchTitle[0],
+    dialCode: '',
+  };
+
+  const onSubmit = async (values, actions) => {
+    const { photo, dialCode, ...payload } = values;
+    dispatch(updatePersonalInfo(payload));
+
+    if (photo) {
+      const base64Photo = await Base64.encode(photo);
+      dispatch(updatePhoto({ photo: base64Photo }));
+    }
+  };
+
   return (
-    <Formik initialValues={initialValues} validationSchema={validationSchema}>
-      {() => (
+    <Formik
+      onSubmit={onSubmit}
+      initialValues={initialValues}
+      validationSchema={validationSchema}
+    >
+      {(formik) => (
         <Form className={styles.personalInformation}>
           <div className={styles.firstColumn}>
-            <img className={styles.avatar} src={avatar} alt="avatar" />
+            <img
+              className={styles.avatar}
+              alt="avatar"
+              src={userData.photo ? userData.photo : avatar}
+            />
 
             <FormikControl
               control="inputFile"
               label="Change photo"
               name="photo"
+              setFieldValue={formik.setFieldValue}
             />
           </div>
           <div className={styles.secondColumn}>
@@ -45,12 +74,7 @@ function PersonalInfo() {
               name="firstName"
             />
 
-            <FormikControl
-              control="inputWithLabel"
-              type="text"
-              label="Last name"
-              name="lastName"
-            />
+            <FormikControl control="inputWithLabel" type="text" label="Last name" name="lastName" />
 
             <FormikControl
               control="selectWithLabel"
@@ -58,7 +82,7 @@ function PersonalInfo() {
               name="title"
               options={searchTitle}
               optionValue="value"
-              optionKey="id"
+              optionKey="value"
             />
           </div>
           <div className={styles.thirdColumn}>
@@ -81,27 +105,22 @@ function PersonalInfo() {
                 optionValue="flag"
                 mainField="country"
                 mainFieldKey="name"
-
               />
 
               <FormikControl
                 control="dependentInput"
                 type="tel"
-                name="mobilePhone"
+                name="phoneNumber"
                 items={CountryList}
                 mainField="dialCode"
                 mainFieldKey="flag"
                 dependentFieldKey="dial_code"
+                initialValue={initialValues.phoneNumber}
               />
             </div>
 
-            <FormikControl
-              control="inputWithLabel"
-              type="text"
-              label="Company"
-              name="company"
-            />
-
+            <FormikControl control="inputWithLabel" type="email" label="E-mail" name="email" />
+            {error ? <div>{error}</div> : null}
             <GreenButton textBody="Save" />
           </div>
         </Form>
