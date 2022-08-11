@@ -1,18 +1,25 @@
+/* eslint-disable no-useless-escape */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable no-unused-vars */
-import {
-  ErrorMessage, Form, Formik, useFormikContext,
-} from 'formik';
+import { ErrorMessage, Form, Formik } from 'formik';
 import React from 'react';
-import { NavLink, useNavigate } from 'react-router-dom';
+import * as Yup from 'yup';
+
+import { Navigate, NavLink, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
-import * as Yup from 'yup';
 import GreenButton from '../../common/Buttons/GreenButton/GreenButton';
 import TextError from '../../common/Forms/TextError/TextError';
 import styles from './CompleteAccountForm.module.scss';
 import reCaptcha from '../../../assets/images/re_captcha.png';
 import FormikControl from '../../common/Forms/FormikControl/FormikControl';
+import { signUp } from '../../../redux/slices/userSlice';
+
+const passwordRegex = {
+  red: /(?=.*[0-9)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{6,}/g,
+  yellow: /(?=.*[0-9)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{6,}/g,
+  green: /(?=.*[0-9)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{6,}/g,
+};
 
 const initialValues = {
   password: '',
@@ -24,22 +31,27 @@ const initialValues = {
 const validationSchema = Yup.object({
   password: Yup.string().required('Required'),
   confirmPassword: Yup.string().required('Required'),
-  // termsService: Yup.string().required('Required'x),
+  // termsService: Yup.string().required('Required'),
   // privacyPolicy: Yup.required('Required'),
 });
 
 function CompleteAccountForm() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { status } = useSelector((state) => state.auth);
+  const { status, error, isCompleted } = useSelector((state) => state.user);
+
+  if (status === 'resolved') {
+    return <Navigate to="/sign-up/complete-account-successful" />;
+  }
+
+  if (!isCompleted) {
+    // return <Navigate to="/sign-up" />;
+  }
 
   const onSubmit = (values, actions) => {
-    const { password } = values;
-    if (status === 'resolved') {
-      navigate('/signup/complete-account-successful');
-    }
+    dispatch(signUp(values.password));
   };
-
+  const regexp = /^[A-Z]/g;
   return (
     <Formik onSubmit={onSubmit} initialValues={initialValues} validationSchema={validationSchema}>
       {(formik) => (
@@ -52,25 +64,9 @@ function CompleteAccountForm() {
           />
 
           <div className={styles.errorPassword}>
-            <span
-              className={
-                formik.values.password.match(/[0-9]$/g) || formik.values.password.match(/[A]$/g)
-                  ? styles.red
-                  : null
-              }
-            >
-              {' '}
-            </span>
-            <span
-              className={
-                formik.values.password.match(/^[A-Z]/g) && formik.values.password.length >= 5
-                  ? styles.red
-                  : null
-              }
-            >
-              {' '}
-            </span>
-            <span> </span>
+            <span className={passwordRegex.red.test(formik.values.password) ? styles.red : null}> </span>
+            <span className={passwordRegex.yellow.test(formik.values.password) ? styles.red : null}> </span>
+            <span className={passwordRegex.green.test(formik.values.password) ? styles.red : null}> </span>
           </div>
 
           <FormikControl

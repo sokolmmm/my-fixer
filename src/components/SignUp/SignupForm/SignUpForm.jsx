@@ -1,10 +1,10 @@
+/* eslint-disable no-debugger */
 /* eslint-disable no-unused-vars */
-import {
-  ErrorMessage, Field, Form, Formik,
-} from 'formik';
 import React from 'react';
-import { Navigate, NavLink, useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
+
+import { ErrorMessage, Form, Formik } from 'formik';
+import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
 import GreenButton from '../../common/Buttons/GreenButton/GreenButton';
@@ -12,29 +12,30 @@ import FormikControl from '../../common/Forms/FormikControl/FormikControl';
 import TextError from '../../common/Forms/TextError/TextError';
 import styles from './SignUpForm.module.scss';
 
+import { setIsCompleted, setUserData } from '../../../redux/slices/userSlice';
+
 const initialValues = {
   firstName: '',
   lastName: '',
-  userName: '',
   email: '',
 };
 
 const validationSchema = Yup.object({
-  firstName: Yup.string().required('Required'),
-  lastName: Yup.string().required('Required'),
-  userName: Yup.string().required('Required'),
+  firstName: Yup.string().min(3).max(15).required('Required'),
+  lastName: Yup.string().min(3).max(15).required('Required'),
   email: Yup.string().email('Invalid email address').required('Required'),
 });
 
 function SignUpForm() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const error = useSelector((state) => state.auth.error);
 
-  const onSubmit = (values, actions) => {
-    // const { firstName, lastName, email } = values;
-    // // dispatch(setUserData({ firstName, lastName, email }));
-    // navigate('/signup/complete-account');
+  const error = useSelector((state) => state.user.error);
+
+  const onSubmit = (values) => {
+    dispatch(setUserData(values));
+    dispatch(setIsCompleted());
+    navigate('/sign-up/complete-account');
   };
 
   return (
@@ -55,11 +56,6 @@ function SignUpForm() {
               <ErrorMessage name="lastName" component={TextError} />
             </div>
           </div>
-          <FormikControl control="input" type="text" name="userName" placeholder="Username" />
-
-          <div>
-            <ErrorMessage name="userName" component={TextError} />
-          </div>
 
           <FormikControl control="input" type="email" name="email" placeholder="E-mail" />
 
@@ -68,7 +64,6 @@ function SignUpForm() {
           </div>
 
           <GreenButton textBody="Get started" />
-          {error ? <h1>{error}</h1> : null }
         </Form>
       )}
     </Formik>

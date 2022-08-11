@@ -12,7 +12,7 @@ function SignUpLayout() {
     {
       spanText: 'Already have an account?',
       linkText: 'Log In',
-      linkHref: '/signin',
+      linkHref: '/sign-in',
     },
   ]);
 
@@ -27,11 +27,7 @@ function SignUpLayout() {
   }, [location]);
 
   React.useEffect(() => {
-    if (path.includes('/signup')) {
-      setHeaderData(data[0]);
-    } else if (path === '/signin/password-recovery') {
-      setHeaderData(data[1]);
-    } else if (path === '/signin/password-reset') {
+    if (path.includes('/sign-up')) {
       setHeaderData(data[0]);
     }
   }, [path]);

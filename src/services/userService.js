@@ -5,6 +5,10 @@ export default class UserService {
     return $api.post('auth/sign-in', payload);
   }
 
+  static signUp(payload) {
+    return $api.post('users', payload);
+  }
+
   static getUser(id) {
     return $api.get(`users/${id}`);
   }

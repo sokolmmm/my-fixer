@@ -7,7 +7,7 @@ import Base64 from '../../helpers/base64';
 import UserService from '../../services/userService';
 
 export const signIn = createAsyncThunk(
-  'auth/signIn',
+  'user/signIn',
   async (payload, { rejectWithValue, dispatch }) => {
     try {
       const response = await UserService.signIn(payload);
@@ -18,6 +18,22 @@ export const signIn = createAsyncThunk(
       window.localStorage.setItem('token', tokens.accessToken);
       window.localStorage.setItem('refresh', tokens.refreshToken);
       return userData;
+    } catch (error) {
+      return rejectWithValue(error.response.data);
+    }
+  },
+);
+
+export const signUp = createAsyncThunk(
+  'user/signUp',
+  async (payload, { rejectWithValue, dispatch, getState }) => {
+    try {
+      dispatch(setPassword(payload));
+      const { userData } = getState().user;
+
+      const response = await UserService.signUp(userData);
+
+      return response.data;
     } catch (error) {
       return rejectWithValue(error.response.data);
     }
@@ -91,8 +107,9 @@ const initialState = {
     title: '',
     profile: '',
   },
+  isCompleted: false,
   isAuth: false,
-  checkedAuth: true,
+  isRefreshRefused: false,
   status: '',
   error: '',
 };
@@ -105,12 +122,18 @@ export const userSlice = createSlice({
       state.userData = '';
       state.isAuth = false;
       state.status = null;
-      state.checkedAuth = false;
+      state.isRefreshRefused = false;
     },
     setUserData: (state, action) => {
       state.userData = action.payload;
     },
-    setIsAuthFalse: (state, action) => {
+    setPassword: (state, action) => {
+      state.userData.password = action.payload;
+    },
+    setIsCompleted: (state) => {
+      state.isCompleted = true;
+    },
+    setIsAuthFalse: (state) => {
       state.isAuth = false;
     },
   },
@@ -122,8 +145,21 @@ export const userSlice = createSlice({
     [signIn.fulfilled]: (state, action) => {
       state.status = 'resolved';
       state.isAuth = true;
+      state.error = null;
     },
     [signIn.rejected]: (state, action) => {
+      state.status = 'rejected';
+      state.error = action.payload.error;
+    },
+    [signUp.pending]: (state) => {
+      state.status = 'loading';
+      state.error = null;
+    },
+    [signUp.fulfilled]: (state) => {
+      state.status = 'resolved';
+      state.userData = '';
+    },
+    [signUp.rejected]: (state, action) => {
       state.status = 'rejected';
       state.error = action.payload.error;
     },
@@ -134,11 +170,15 @@ export const userSlice = createSlice({
     [checkIsAuth.fulfilled]: (state, action) => {
       state.status = 'resolved';
       state.isAuth = true;
+      state.error = null;
     },
     [checkIsAuth.rejected]: (state, action) => {
       state.status = 'rejected';
       state.isAuth = false;
-      state.checkedAuth = false;
+      state.isRefreshRefused = true;
+    },
+    [updatePersonalInfo.fulfilled]: (state, action) => {
+      state.error = null;
     },
     [updatePersonalInfo.rejected]: (state, action) => {
       state.status = 'rejected';
@@ -151,6 +191,8 @@ export const userSlice = createSlice({
   },
 });
 
-export const { signOut, setUserData, setIsAuthFalse } = userSlice.actions;
+export const {
+  signOut, setUserData, setIsAuthFalse, setPassword, setIsCompleted,
+} = userSlice.actions;
 
 export default userSlice.reducer;

@@ -13,12 +13,12 @@ function SignInLayout() {
     {
       spanText: 'Do not have an account?',
       linkText: 'Sign up',
-      linkHref: '/signup',
+      linkHref: '/sign-up',
     },
     {
       spanText: 'Back to ',
       linkText: 'Sign in',
-      linkHref: '/signin',
+      linkHref: '/sign-in',
     },
   ]);
 
@@ -33,13 +33,13 @@ function SignInLayout() {
   }, [location]);
 
   React.useEffect(() => {
-    if (path === '/signin') {
+    if (path === '/sign-in') {
       setHeaderData(data[0]);
-    } else if (path === '/signin/password-recovery') {
+    } else if (path === '/sign-in/password-recovery') {
       setHeaderData(data[1]);
-    } else if (path === '/signin/password-reset') {
+    } else if (path === '/sign-in/password-reset') {
       setHeaderData(data[0]);
-    } else if (path === '/signin/password-reset-successful') {
+    } else if (path === '/sign-in/password-reset-successful') {
       setHeaderData(data[1]);
     }
   }, [path]);

@@ -45,11 +45,7 @@ function PersonalInfo() {
   };
 
   return (
-    <Formik
-      onSubmit={onSubmit}
-      initialValues={initialValues}
-      validationSchema={validationSchema}
-    >
+    <Formik enableReinitialize onSubmit={onSubmit} initialValues={initialValues} validationSchema={validationSchema}>
       {(formik) => (
         <Form className={styles.personalInformation}>
           <div className={styles.firstColumn}>
@@ -115,7 +111,7 @@ function PersonalInfo() {
                 mainField="dialCode"
                 mainFieldKey="flag"
                 dependentFieldKey="dial_code"
-                initialValue={initialValues.phoneNumber}
+                initialValue={userData.phoneNumber}
               />
             </div>
 

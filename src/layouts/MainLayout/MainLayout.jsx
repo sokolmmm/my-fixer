@@ -14,16 +14,16 @@ function MainLayout() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const { status, isAuth, checkedAuth } = useSelector((state) => state.user);
+  const { status, isAuth, isRefreshRefused } = useSelector((state) => state.user);
 
   React.useEffect(() => {
     if (!isAuth) {
       dispatch(checkIsAuth());
-      if (!checkedAuth) {
+      if (isRefreshRefused) {
         navigate('/sign-in');
       }
     }
-  }, [isAuth, checkedAuth]);
+  }, [isAuth, isRefreshRefused]);
 
   const location = useLocation(0);
   const [path, setPath] = React.useState(location.pathname);
