@@ -2,20 +2,20 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 
 import LogoIcon from '../../Icons/LogoIcon/LogoIcon';
 import styles from './MainHeader.module.scss';
 import avatar from '../../../../assets/images/avatar.png';
-
-import { signOut } from '../../../../redux/slices/userSlice';
+import { signOut } from '../../../../redux/auth/slice';
+import { deleteUserData } from '../../../../redux/slices/userSlice';
 
 function MainHeader({ history }) {
   const dispatch = useDispatch();
-  // const { } = useSelector((state) => state )
 
   const signOutOnClick = () => {
+    dispatch(deleteUserData());
     dispatch(signOut());
     window.localStorage.removeItem('token');
     window.localStorage.removeItem('refresh');

@@ -4,17 +4,18 @@ import React from 'react';
 import { Outlet, useLocation, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
-import Base64 from '../../helpers/base64';
 import MainHeader from '../../components/common/Headers/MainHeader/MainHeader';
 import Navbar from '../../components/common/Navbar/Navbar';
 import styles from './MainLayout.module.scss';
-import { checkIsAuth } from '../../redux/slices/userSlice';
+
+import { checkIsAuth } from '../../redux/auth/asyncActions';
+import { selectAuth } from '../../redux/auth/selectors';
 
 function MainLayout() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const { status, isAuth, isRefreshRefused } = useSelector((state) => state.user);
+  const { isAuth, isRefreshRefused, statuses } = useSelector(selectAuth);
 
   React.useEffect(() => {
     if (!isAuth) {
@@ -61,7 +62,7 @@ function MainLayout() {
   }, [path]);
   return (
     <>
-      {status === 'loading' ? (
+      {statuses.checkIsAuthStatus === 'loading' ? (
         <div>Preloader</div>
       ) : (
         <div className={styles.wrapper}>

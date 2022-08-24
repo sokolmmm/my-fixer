@@ -1,12 +1,17 @@
-/* eslint-disable no-unused-vars */
+/* eslint-disable react/jsx-no-useless-fragment */
 /* eslint-disable react/style-prop-object */
 import React from 'react';
+
+import { useSelector } from 'react-redux';
 import { Outlet, useLocation } from 'react-router-dom';
+
 import LoginHeader from '../../components/common/Headers/LoginHeader/LoginHeader';
 import styles from './SignUpLayout.module.scss';
 
 function SignUpLayout() {
   const location = useLocation(0);
+  const { signUpStatus } = useSelector((state) => state.user.statuses);
+
   const [path, setPath] = React.useState(location.pathname);
   const [data] = React.useState([
     {
@@ -24,23 +29,26 @@ function SignUpLayout() {
 
   React.useEffect(() => {
     setPath(location.pathname);
-  }, [location]);
-
-  React.useEffect(() => {
     if (path.includes('/sign-up')) {
       setHeaderData(data[0]);
     }
-  }, [path]);
+  }, [location, path]);
 
   return (
-    <div className={styles.signUpWrapper}>
-      <LoginHeader
-        spanText={headerData.spanText}
-        linkText={headerData.linkText}
-        linkHref={headerData.linkHref}
-      />
-      <Outlet />
-    </div>
+    <>
+      {signUpStatus === 'loading' ? (
+        <div>loading</div>
+      ) : (
+        <div className={styles.signUpWrapper}>
+          <LoginHeader
+            spanText={headerData.spanText}
+            linkText={headerData.linkText}
+            linkHref={headerData.linkHref}
+          />
+          <Outlet />
+        </div>
+      )}
+    </>
   );
 }
 

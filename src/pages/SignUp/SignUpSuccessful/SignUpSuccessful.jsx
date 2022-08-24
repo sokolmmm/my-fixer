@@ -1,10 +1,10 @@
 import React from 'react';
-import styles from './CompleteAccountSuccessful.module.scss';
+import styles from './SignUpSuccessful.module.scss';
 import letter from '../../../assets/images/letter.svg';
 
-function CompleteAccountSuccessful() {
+function SignUpSuccessful() {
   return (
-    <section className={styles.completeAccountSuccessful}>
+    <section className={styles.signUpSuccessful}>
       <figure>
         <img src={letter} alt="letter" />
       </figure>
@@ -14,4 +14,4 @@ function CompleteAccountSuccessful() {
   );
 }
 
-export default CompleteAccountSuccessful;
+export default SignUpSuccessful;

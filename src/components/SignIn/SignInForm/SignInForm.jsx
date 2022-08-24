@@ -2,7 +2,7 @@
 import React from 'react';
 import * as Yup from 'yup';
 
-import { Navigate, NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { ErrorMessage, Form, Formik } from 'formik';
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -11,37 +11,49 @@ import FormikControl from '../../common/Forms/FormikControl/FormikControl';
 import TextError from '../../common/Forms/TextError/TextError';
 import styles from './SignInForm.module.scss';
 
-import { signIn } from '../../../redux/slices/userSlice';
-
-const initialValues = {
-  email: '',
-  password: '',
-};
-
-const validationSchema = Yup.object({
-  email: Yup.string().email('Invalid email address').required('Required'),
-  password: Yup.string().min(3).required('Required'),
-});
+import { signIn } from '../../../redux/auth/asyncActions';
+import { selectAuth } from '../../../redux/auth/selectors';
+import { selectUserData } from '../../../redux/user/selectors';
 
 function SignInForm() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-  const {
-    isAuth, status, error, userData,
-  } = useSelector((state) => state.user);
+  const { isAuth, error } = useSelector(selectAuth);
+  const userData = useSelector(selectUserData);
 
-  if (isAuth) {
-    return <Navigate to={`/profile/${userData.id}/personal-info`} />;
-  }
+  const [isSent, setIsSent] = React.useState(false);
 
-  const onSubmit = (values, actions) => {
-    dispatch(signIn(values));
-    actions.setSubmitting(false);
-    actions.resetForm({ values: initialValues });
+  const initialValues = {
+    email: '',
+    password: '',
   };
 
+  const validationSchema = Yup.object({
+    email: Yup.string().email('Invalid email address').required('Required'),
+    password: Yup.string().min(3).required('Required'),
+  });
+
+  const onSubmit = async (values, actions) => {
+    await dispatch(signIn(values));
+    actions.setSubmitting(false);
+    actions.resetForm({ values: initialValues });
+    setIsSent(true);
+  };
+
+  React.useEffect(() => {
+    if (isAuth) {
+      navigate(`/profile/${userData.id}/personal-info`);
+    }
+  }, [isAuth]);
+
   return (
-    <Formik onSubmit={onSubmit} initialValues={initialValues} validationSchema={validationSchema}>
+    <Formik
+      initialValues={initialValues}
+      validationSchema={validationSchema}
+      onSubmit={onSubmit}
+      validateOnMount
+    >
       {(formik) => (
         <Form className={styles.signInForm}>
           <FormikControl control="input" type="email" name="email" placeholder="E-mail" />
@@ -52,12 +64,11 @@ function SignInForm() {
 
           <FormikControl control="input" type="password" name="password" placeholder="Password" />
 
-          <div className={styles.serverError}>
-            {!formik.touched || !formik.touched.password ? (
+          <div className={styles.error}>
+            {!formik.touched.email && !formik.touched.password && isSent ? (
               <p>{error}</p>
             ) : (
               <ErrorMessage
-                className={styles.errorPassword}
                 name="password"
                 component={TextError}
               />

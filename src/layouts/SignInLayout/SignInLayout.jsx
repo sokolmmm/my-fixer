@@ -30,19 +30,16 @@ function SignInLayout() {
 
   React.useEffect(() => {
     setPath(location.pathname);
-  }, [location]);
-
-  React.useEffect(() => {
-    if (path === '/sign-in') {
+    if (path === '/sign-in' || path === '/sign-in/password-reset') {
       setHeaderData(data[0]);
-    } else if (path === '/sign-in/password-recovery') {
-      setHeaderData(data[1]);
-    } else if (path === '/sign-in/password-reset') {
-      setHeaderData(data[0]);
-    } else if (path === '/sign-in/password-reset-successful') {
+    } else if (
+      path === '/sign-in/password-recovery'
+      || path === '/sign-in/password-recovery-confirm'
+      || path === '/sign-in/password-reset-successful'
+    ) {
       setHeaderData(data[1]);
     }
-  }, [path]);
+  }, [location, path]);
 
   return (
     <div className={styles.signInWrapper}>

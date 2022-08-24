@@ -10,4 +10,11 @@
     grid-template-columns: 1fr 1fr;
     column-gap: 1.25rem;
   }
+
+  .serverError {
+    color: red;
+    font-family: 'Roboto';
+    font-size: 0.875rem;
+    line-height: 1rem;
+  }
 }

@@ -20,4 +20,8 @@ export default class UserService {
   static updatePhoto(payload) {
     return $api.put('/users/photo', payload);
   }
+
+  static resetPasswordRequest(payload) {
+    return $api.post('/users/password/reset', payload);
+  }
 }
