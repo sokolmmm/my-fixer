@@ -9,6 +9,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import GreenButton from '../../common/Buttons/GreenButton/GreenButton';
 import FormikControl from '../../common/Forms/FormikControl/FormikControl';
 import TextError from '../../common/Forms/TextError/TextError';
+import CombinedError from '../../common/Forms/CombinedError/CombinedError';
 import styles from './SignInForm.module.scss';
 
 import { signIn } from '../../../redux/auth/asyncActions';
@@ -64,16 +65,11 @@ function SignInForm() {
 
           <FormikControl control="input" type="password" name="password" placeholder="Password" />
 
-          <div className={styles.error}>
-            {!formik.touched.email && !formik.touched.password && isSent ? (
-              <p>{error}</p>
-            ) : (
-              <ErrorMessage
-                name="password"
-                component={TextError}
-              />
-            )}
-          </div>
+          <CombinedError
+            name="password"
+            serverError={error}
+            condition={!formik.touched.email && !formik.touched.password && isSent}
+          />
 
           <NavLink to="password-recovery">Forgot password?</NavLink>
 

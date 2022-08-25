@@ -8,6 +8,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import GreenButton from '../../common/Buttons/GreenButton/GreenButton';
 import FormikControl from '../../common/Forms/FormikControl/FormikControl';
 import TextError from '../../common/Forms/TextError/TextError';
+import CombinedError from '../../common/Forms/CombinedError/CombinedError';
 import styles from './SignUpForm.module.scss';
 
 import { firstStepSignUp } from '../../../redux/signUp/slice';
@@ -57,13 +58,12 @@ function SignUpForm() {
 
           <FormikControl control="input" type="email" name="email" placeholder="E-mail" />
 
-          <div className={styles.serverError}>
-            {!formik.touched.email && !formik.touched.firstName && !formik.touched.lastName ? (
-              <p>{error}</p>
-            ) : (
-              <ErrorMessage name="email" component={TextError} />
-            )}
-          </div>
+          <CombinedError
+            name="email"
+            serverError={error}
+            condition={!formik.touched.email && !formik.touched.firstName && !formik.touched.lastName}
+          />
+
           <GreenButton textBody="Get started" disabled={!formik.isValid} />
         </Form>
       )}

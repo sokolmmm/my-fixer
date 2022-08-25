@@ -1,13 +1,13 @@
 import React from 'react';
 import * as Yup from 'yup';
 
-import { ErrorMessage, Form, Formik } from 'formik';
+import { Form, Formik } from 'formik';
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
 import GreenButton from '../../common/Buttons/GreenButton/GreenButton';
 import FormikControl from '../../common/Forms/FormikControl/FormikControl';
-import TextError from '../../common/Forms/TextError/TextError';
+import CombinedError from '../../common/Forms/CombinedError/CombinedError';
 import styles from './PasswordRecoveryForm.module.scss';
 
 import { sendResetPasswordMail } from '../../../redux/password/asyncActions';
@@ -53,17 +53,23 @@ function PasswordRecoveryForm() {
     >
       {(formik) => (
         <Form className={styles.passwordRecoveryForm}>
-          <FormikControl control="input" type="email" name="email" placeholder="E-mail" />
+          <FormikControl
+            control="input"
+            type="email"
+            name="email"
+            placeholder="E-mail"
+          />
 
-          <div className={styles.error}>
-            {!formik.touched.email && isSent ? (
-              <p>{error}</p>
-            ) : (
-              <ErrorMessage name="email" component={TextError} />
-            )}
-          </div>
+          <CombinedError
+            name="email"
+            serverError={error}
+            condition={!formik.touched.email && isSent}
+          />
 
-          <GreenButton textBody="Send" disabled={!formik.isValid || formik.isSubmitting} />
+          <GreenButton
+            textBody="Send"
+            disabled={!formik.isValid || formik.isSubmitting}
+          />
         </Form>
       )}
     </Formik>

@@ -1,13 +1,13 @@
 import React from 'react';
 import * as Yup from 'yup';
 
-import { ErrorMessage, Form, Formik } from 'formik';
+import { Form, Formik } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 import GreenButton from '../../common/Buttons/GreenButton/GreenButton';
 import FormikControl from '../../common/Forms/FormikControl/FormikControl';
-import TextError from '../../common/Forms/TextError/TextError';
+import CombinedError from '../../common/Forms/CombinedError/CombinedError';
 import styles from './ConfirmRecoveryForm.module.scss';
 
 import { checkCode } from '../../../redux/password/asyncActions';
@@ -40,10 +40,10 @@ function ConfirmRecoveryForm() {
   React.useEffect(() => {
     if (!isMailSent) {
       navigate('/sign-in/password-recovery');
-    } else if (isMailSent && isCodeVerified) {
+    } else if (isCodeVerified && isSent) {
       navigate('/sign-in/password-reset');
     }
-  }, [isMailSent, isCodeVerified]);
+  }, [isMailSent, isCodeVerified, isSent]);
 
   return (
     <Formik
@@ -56,13 +56,11 @@ function ConfirmRecoveryForm() {
         <Form className={styles.confirmRecoveryForm}>
           <FormikControl control="input" type="text" name="code" placeholder="Enter reset code" />
 
-          <div className={styles.error}>
-            {!formik.touched.code && isSent ? (
-              <p>{errors.checkCodeError}</p>
-            ) : (
-              <ErrorMessage name="code" component={TextError} />
-            )}
-          </div>
+          <CombinedError
+            name="code"
+            serverError={errors.checkCodeError}
+            condition={!formik.touched.code && isSent}
+          />
 
           <GreenButton textBody="Send" disabled={!formik.isValid || formik.isSubmitting} />
         </Form>

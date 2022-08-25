@@ -8,4 +8,8 @@ export default class PasswordService {
   static verifyCode(payload) {
     return $api.post('/users/password/reset/verify-code', payload);
   }
+
+  static resetPassword(payload) {
+    return $api.put('/users/password/reset', payload);
+  }
 }

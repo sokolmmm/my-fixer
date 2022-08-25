@@ -2,7 +2,7 @@
 /* eslint-disable no-param-reassign */
 import { createSlice } from '@reduxjs/toolkit';
 
-import { checkCode, sendResetPasswordMail } from './asyncActions';
+import { checkCode, resetPassword, sendResetPasswordMail } from './asyncActions';
 
 const initialState = {
   passwordData: {
@@ -12,13 +12,16 @@ const initialState = {
   },
   isMailSent: false,
   isCodeVerified: false,
+  isPasswordReset: false,
   statuses: {
     sendResetPasswordMailStatus: '',
     checkCodeStatus: '',
+    resetPasswordStatus: '',
   },
   errors: {
     sendResetPasswordMailError: '',
     checkCodeError: '',
+    resetPasswordError: '',
   },
 };
 
@@ -56,6 +59,18 @@ export const passwordSlice = createSlice({
     builder.addCase(checkCode.rejected, (state, action) => {
       state.statuses.checkCodeStatus = 'rejected';
       state.errors.checkCodeError = action.payload.error;
+    });
+    builder.addCase(resetPassword.pending, (state) => {
+      state.statuses.resetPasswordStatus = 'loading';
+      state.errors.resetPasswordError = '';
+    });
+    builder.addCase(resetPassword.fulfilled, (state) => {
+      state.statuses.resetPasswordStatus = 'resolved';
+      state.isPasswordReset = true;
+    });
+    builder.addCase(resetPassword.rejected, (state, action) => {
+      state.statuses.resetPasswordStatus = 'rejected';
+      state.errors.resetPasswordError = action.payload.error;
     });
   },
 });

@@ -34,7 +34,7 @@ export const authSlice = createSlice({
     },
     [signIn.rejected]: (state, action) => {
       state.statuses.signInStatus = 'rejected';
-      state.errors = action.payload.error;
+      state.error = action.payload.error;
     },
     [checkIsAuth.pending]: (state) => {
       state.statuses.checkIsAuthStatus = 'loading';

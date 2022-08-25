@@ -1,4 +1,3 @@
-import './App.scss';
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 
@@ -9,10 +8,10 @@ import MainLayout from './layouts/MainLayout/MainLayout';
 import SignIn from './pages/SignIn/SignIn/SignIn';
 import PasswordRecovery from './pages/SignIn/PasswordRecovery/PasswordRecovery';
 import ConfirmRecovery from './pages/SignIn/ConfirmRecovery/ConfirmRecovery';
-import PassReset from './pages/SignIn/PassReset/PassReset';
+import PasswordReset from './pages/SignIn/PasswordReset/PasswordReset';
+import ResetSuccessful from './pages/SignIn/ResetSuccessful/ResetSuccessful';
 
 import SignUp from './pages/SignUp/SignUp/SignUp';
-import ResetSuccessful from './pages/SignIn/ResetSuccessful/ResetSuccessful';
 import SignUpComplete from './pages/SignUp/SignUpComplete/SignUpComplete';
 import SignUpSuccessful from './pages/SignUp/SignUpSuccessful/SignUpSuccessful';
 import ActivationSuccessful from './pages/SignUp/ActivationSuccessful/ActivationSuccessful';
@@ -23,6 +22,7 @@ import Profile from './pages/Profile/Profile';
 
 import PersonalInfo from './components/Profile/PersonalInfo/PersonalInfo';
 import AccountInfo from './components/Profile/AccountInfo/AccountInfo';
+import './App.scss';
 
 function App() {
   return (
@@ -32,10 +32,8 @@ function App() {
           <Route index element={<SignIn />} />
           <Route path="password-recovery" element={<PasswordRecovery />} />
           <Route path="password-recovery-confirm" element={<ConfirmRecovery />} />
-          <Route path="password-reset" element={<PassReset />} />
+          <Route path="password-reset" element={<PasswordReset />} />
           <Route path="password-reset-successful" element={<ResetSuccessful />} />
-
-          ConfirmRecovery
         </Route>
         <Route path="/sign-up" element={<SignUpLayout />}>
           <Route index element={<SignUp />} />
