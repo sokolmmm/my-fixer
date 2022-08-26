@@ -63,7 +63,12 @@ function SignInForm() {
             <ErrorMessage name="email" component={TextError} />
           </div>
 
-          <FormikControl control="input" type="password" name="password" placeholder="Password" />
+          <FormikControl
+            control="inputForPassword"
+            name="password"
+            placeholder="Password"
+            condition={formik.values.password}
+          />
 
           <CombinedError
             name="password"

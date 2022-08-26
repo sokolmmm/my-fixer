@@ -5,3 +5,5 @@ export const selectResetPasswordStatus = (state) => state.password.statuses.send
 export const selectResetPasswordError = (state) => state.password.errors.sendResetPasswordMailError;
 
 export const selectIsMailSent = (state) => state.password.isMailSent;
+
+export const selectIsPasswordReset = (state) => state.password.isPasswordReset;

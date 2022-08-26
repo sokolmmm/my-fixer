@@ -13,9 +13,9 @@ import GreenButton from '../../common/Buttons/GreenButton/GreenButton';
 import TextError from '../../common/Forms/TextError/TextError';
 import FormikControl from '../../common/Forms/FormikControl/FormikControl';
 import PasswordChecker from '../../common/PasswordChecker/PasswordChecker';
-import reCaptcha from '../../../assets/images/re_captcha.png';
 import passwordRegEx from '../../../helpers/constants/passwordRegEx';
 import styles from './SignUpCompleteForm.module.scss';
+import reCaptcha from '../../../assets/images/re_captcha.png';
 
 import { signUp } from '../../../redux/signUp/asyncActions';
 import { selectSignUpData } from '../../../redux/signUp/selectors';
@@ -70,10 +70,10 @@ function SignUpCompleteForm() {
       {(formik) => (
         <Form className={styles.completeAccountForm}>
           <FormikControl
-            control="input"
-            type="password"
+            control="inputForPassword"
             name="password"
             placeholder="Create a password"
+            condition={formik.values.password}
           />
 
           <PasswordChecker
@@ -82,15 +82,16 @@ function SignUpCompleteForm() {
           />
 
           <FormikControl
-            control="input"
-            type="password"
+            control="inputForPassword"
             name="confirmPassword"
             placeholder="Confirm password"
+            condition={formik.values.confirmPassword}
           />
 
           <div>
             <ErrorMessage name="confirmPassword" component={TextError} />
           </div>
+
           <div className={styles.checkboxGroup}>
             <FormikControl
               control="checkbox"
@@ -99,7 +100,6 @@ function SignUpCompleteForm() {
             />
             <NavLink to="s">Terms of Service</NavLink>
           </div>
-
           <div className={styles.checkboxGroup}>
             <FormikControl
               control="checkbox"
@@ -111,7 +111,6 @@ function SignUpCompleteForm() {
           <figure>
             <img src={reCaptcha} alt="reCaptcha" />
           </figure>
-
           <GreenButton textBody="Get started" disabled={!formik.isValid} />
         </Form>
       )}

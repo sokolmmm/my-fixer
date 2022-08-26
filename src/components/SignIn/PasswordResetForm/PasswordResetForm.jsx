@@ -10,7 +10,7 @@ import FormikControl from '../../common/Forms/FormikControl/FormikControl';
 import CombinedError from '../../common/Forms/CombinedError/CombinedError';
 import PasswordChecker from '../../common/PasswordChecker/PasswordChecker';
 import passwordRegEx from '../../../helpers/constants/passwordRegEx';
-import styles from './PassResetForm.module.scss';
+import styles from './PasswordResetForm.module.scss';
 
 import { selectPassword } from '../../../redux/password/selectors';
 import { resetPassword } from '../../../redux/password/asyncActions';
@@ -50,8 +50,7 @@ function PasswordResetForm() {
   };
 
   React.useEffect(() => {
-    // if (!isCodeVerified) {
-    if (false) {
+    if (!isCodeVerified) {
       navigate('/sign-in/password-recovery');
     } else if (isPasswordReset && isCodeVerified) {
       navigate('/sign-in/password-reset-successful');
@@ -67,11 +66,12 @@ function PasswordResetForm() {
     >
       {(formik) => (
         <Form className={styles.passwordResetForm}>
+
           <FormikControl
-            control="input"
-            type="password"
+            control="inputForPassword"
             name="password"
             placeholder="New password"
+            condition={formik.values.password}
           />
 
           <PasswordChecker
@@ -80,10 +80,10 @@ function PasswordResetForm() {
           />
 
           <FormikControl
-            control="input"
-            type="password"
+            control="inputForPassword"
             name="confirmPassword"
             placeholder="Confirm password"
+            condition={formik.values.confirmPassword}
           />
 
           <CombinedError

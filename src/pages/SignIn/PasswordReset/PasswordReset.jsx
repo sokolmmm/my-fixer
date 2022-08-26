@@ -1,6 +1,6 @@
 import React from 'react';
 
-import PasswordResetForm from '../../../components/SignIn/PassResetForm/PassResetForm';
+import PasswordResetForm from '../../../components/SignIn/PasswordResetForm/PasswordResetForm';
 import styles from './PasswordReset.module.scss';
 
 function PasswordReset() {
