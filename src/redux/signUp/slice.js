@@ -30,21 +30,21 @@ export const signUpSlice = createSlice({
       state.userData.password = action.payload.password;
     },
   },
-  extraReducers: {
-    [signUp.pending]: (state) => {
+  extraReducers: (builder) => {
+    builder.addCase(signUp.pending, (state) => {
       state.status = 'loading';
       state.error = '';
-    },
-    [signUp.fulfilled]: (state) => {
+    });
+    builder.addCase(signUp.fulfilled, (state) => {
       state.status = 'resolved';
       state.userData = initialState.userData;
       state.isFirstStepCompleted = false;
-    },
-    [signUp.rejected]: (state, action) => {
+    });
+    builder.addCase(signUp.rejected, (state, action) => {
       state.status = 'rejected';
       state.isFirstStepCompleted = false;
       state.error = action.payload.error;
-    },
+    });
   },
 });
 

@@ -8,8 +8,9 @@ import { NavLink } from 'react-router-dom';
 import LogoIcon from '../../Icons/LogoIcon/LogoIcon';
 import styles from './MainHeader.module.scss';
 import avatar from '../../../../assets/images/avatar.png';
+
 import { signOut } from '../../../../redux/auth/slice';
-import { deleteUserData } from '../../../../redux/slices/userSlice';
+import { deleteUserData } from '../../../../redux/user/slice';
 
 function MainHeader({ history }) {
   const dispatch = useDispatch();

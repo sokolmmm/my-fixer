@@ -38,7 +38,7 @@ function SignInForm() {
   const onSubmit = async (values, actions) => {
     await dispatch(signIn(values));
     actions.setSubmitting(false);
-    actions.resetForm({ values: initialValues });
+    actions.resetForm({ values: { email: values.email, password: '' } });
     setIsSent(true);
   };
 
@@ -78,7 +78,7 @@ function SignInForm() {
 
           <NavLink to="password-recovery">Forgot password?</NavLink>
 
-          <GreenButton textBody="Sign in" disabled={!formik.isValid || formik.isSubmitting} />
+          <GreenButton textBody="Sign in" disabled={!formik.isValid || formik.isSubmitting || !formik.values} />
         </Form>
       )}
     </Formik>

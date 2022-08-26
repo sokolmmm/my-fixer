@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable no-unused-vars */
 import React from 'react';
 import CountryList from 'country-list-with-dial-code-and-flag';
@@ -12,8 +14,8 @@ import avatar from '../../../assets/images/avatar.png';
 import styles from './PersonalInfo.module.scss';
 import searchTitle from '../../../helpers/constants/searchTitle';
 
-import { updatePersonalInfo, updatePhoto } from '../../../redux/slices/userSlice';
 import Base64 from '../../../helpers/base64';
+import { updatePersonalInfo } from '../../../redux/user/asyncActions';
 
 const validationSchema = Yup.object({
   email: Yup.string().email('Invalid email address').required('Required'),
@@ -21,7 +23,7 @@ const validationSchema = Yup.object({
 
 function PersonalInfo() {
   const dispatch = useDispatch();
-  const { userData, error } = useSelector((state) => state.user);
+  const { userData } = useSelector((state) => state.user);
 
   const initialValues = {
     photo: '',
@@ -38,10 +40,10 @@ function PersonalInfo() {
     const { photo, dialCode, ...payload } = values;
     dispatch(updatePersonalInfo(payload));
 
-    if (photo) {
-      const base64Photo = await Base64.encode(photo);
-      dispatch(updatePhoto({ photo: base64Photo }));
-    }
+    // if (photo) {
+    //   const base64Photo = await Base64.encode(photo);
+    //   dispatch(updatePhoto({ photo: base64Photo }));
+    // }
   };
 
   return (
@@ -52,7 +54,7 @@ function PersonalInfo() {
             <img
               className={styles.avatar}
               alt="avatar"
-              src={userData.photo ? userData.photo : avatar}
+              src={formik.values.photo[0] || userData.photo || avatar}
             />
 
             <FormikControl
@@ -116,7 +118,7 @@ function PersonalInfo() {
             </div>
 
             <FormikControl control="inputWithLabel" type="email" label="E-mail" name="email" />
-            {error ? <div>{error}</div> : null}
+            {/* {error ? <div>{error}</div> : null} */}
             <GreenButton textBody="Save" />
           </div>
         </Form>

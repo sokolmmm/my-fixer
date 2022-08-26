@@ -67,6 +67,7 @@ export const passwordSlice = createSlice({
     builder.addCase(resetPassword.fulfilled, (state) => {
       state.statuses.resetPasswordStatus = 'resolved';
       state.isPasswordReset = true;
+      state.passwordData = initialState.passwordData;
     });
     builder.addCase(resetPassword.rejected, (state, action) => {
       state.statuses.resetPasswordStatus = 'rejected';

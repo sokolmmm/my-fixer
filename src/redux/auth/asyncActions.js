@@ -1,10 +1,11 @@
+/* eslint-disable import/no-cycle */
 /* eslint-disable import/prefer-default-export */
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
 import AuthService from '../../services/authService';
 import Base64 from '../../helpers/base64';
 
-import { setUserData } from '../slices/userSlice';
+import { setUserData } from '../user/slice';
 
 export const signIn = createAsyncThunk(
   'auth/signIn',
