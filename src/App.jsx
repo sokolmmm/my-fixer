@@ -1,39 +1,48 @@
-import './App.scss';
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
-import SignInLayout from './components/Layouts/SignInLayout/SignInLayout';
-import SignIn from './components/SignIn/SignIn/SignIn';
-import PassRecovery from './components/SignIn/PassRecovery/PassRecovery';
-import PassReset from './components/SignIn/PassReset/PassReset';
-import SignUp from './components/SignUp/SignUp/SignUp';
-import CompleteAccount from './components/SignUp/CompleteAccount/CompleteAccount';
-import ResetSuccessful from './components/SignIn/ResetSuccessful/ResetSuccessful';
-import MainLayout from './components/Layouts/MainLayout/MainLayout';
-import Profile from './components/Profile/Profile';
-import Search from './components/Search/Search';
-import SignUpLayout from './components/Layouts/SignUpLayout/SignUpLayout';
-import CompleteAccountSuccessful from './components/SignUp/CompleteAccountSuccessful/CompleteAccountSuccessful';
-import AccountInfo from './components/Profile/AccountInfo/AccountInfo';
+
+import SignUpLayout from './layouts/SignUpLayout/SignUpLayout';
+import SignInLayout from './layouts/SignInLayout/SignInLayout';
+import MainLayout from './layouts/MainLayout/MainLayout';
+
+import SignIn from './pages/SignIn/SignIn/SignIn';
+import PasswordRecovery from './pages/SignIn/PasswordRecovery/PasswordRecovery';
+import ConfirmRecovery from './pages/SignIn/ConfirmRecovery/ConfirmRecovery';
+import PasswordReset from './pages/SignIn/PasswordReset/PasswordReset';
+import ResetSuccessful from './pages/SignIn/ResetSuccessful/ResetSuccessful';
+
+import SignUp from './pages/SignUp/SignUp/SignUp';
+import SignUpComplete from './pages/SignUp/SignUpComplete/SignUpComplete';
+import SignUpSuccessful from './pages/SignUp/SignUpSuccessful/SignUpSuccessful';
+import ActivationSuccessful from './pages/SignUp/ActivationSuccessful/ActivationSuccessful';
+
+import AdminZone from './pages/AdminZone/AdminZone';
+import Search from './pages/Search/Search';
+import Profile from './pages/Profile/Profile';
+
 import PersonalInfo from './components/Profile/PersonalInfo/PersonalInfo';
-import AdminZone from './components/AdminZone/AdminZone';
+import AccountInfo from './components/Profile/AccountInfo/AccountInfo';
+import './App.scss';
 
 function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path="/signin" element={<SignInLayout />}>
+        <Route path="/sign-in" element={<SignInLayout />}>
           <Route index element={<SignIn />} />
-          <Route path="password-recovery" element={<PassRecovery />} />
-          <Route path="password-reset" element={<PassReset />} />
+          <Route path="password-recovery" element={<PasswordRecovery />} />
+          <Route path="password-recovery-confirm" element={<ConfirmRecovery />} />
+          <Route path="password-reset" element={<PasswordReset />} />
           <Route path="password-reset-successful" element={<ResetSuccessful />} />
         </Route>
-        <Route path="/signup" element={<SignUpLayout />}>
+        <Route path="/sign-up" element={<SignUpLayout />}>
           <Route index element={<SignUp />} />
-          <Route path="complete-account" element={<CompleteAccount />} />
-          <Route path="complete-account-successful" element={<CompleteAccountSuccessful />} />
+          <Route path="complete" element={<SignUpComplete />} />
+          <Route path="successful" element={<SignUpSuccessful />} />
+          <Route path="activation-successful" element={<ActivationSuccessful />} />
         </Route>
         <Route path="/" element={<MainLayout />}>
-          <Route path="profile" element={<Profile />}>
+          <Route path="profile/:userId" element={<Profile />}>
             <Route path="account-info" element={<AccountInfo />} />
             <Route path="personal-info" element={<PersonalInfo />} />
           </Route>

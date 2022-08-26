@@ -10,6 +10,7 @@ function DependetInput(props) {
     type,
     name,
     placeholder,
+    initialValue,
     items,
     mainField,
     mainFieldKey,
@@ -21,22 +22,16 @@ function DependetInput(props) {
 
   React.useEffect(() => {
     if (values[mainField].trim() !== '') {
-      const dependetValue = items.find(
-        (el) => el[mainFieldKey] === values[mainField],
-      )[dependentFieldKey];
+      const dependetValue = items.find((el) => el[mainFieldKey] === values[mainField])[
+        dependentFieldKey
+      ];
       setFieldValue(name, dependetValue);
     }
   }, [values[mainField], setFieldValue, name]);
 
   return (
     <div className={styles.formControl}>
-      <Field
-        type={type}
-        id={name}
-        name={name}
-        placeholder={placeholder}
-        {...rest}
-      />
+      <Field type={type} id={name} name={name} placeholder={placeholder} {...rest} />
     </div>
   );
 }

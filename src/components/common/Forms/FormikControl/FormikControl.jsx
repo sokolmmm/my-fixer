@@ -2,15 +2,19 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import React from 'react';
-import Checkbox from '../Checkbox/Checkbox';
-import DependetInput from '../Inputs/DependentInput/DependentInput';
+
 import Input from '../Inputs/Input/Input';
 import InputFile from '../Inputs/InputFile/InputFile';
+import InputForPassword from '../Inputs/InputForPassword/InputForPassword';
 import InputWithLabel from '../Inputs/InputWithLabel/InputWithLabel';
 import SearchInput from '../Inputs/SearchInput/SearchInput';
-import RadioButton from '../Radio/RadioButton';
-import DependetSelect from '../Selects/DependentSelect/DependentSelect';
+import DependetInput from '../Inputs/DependentInput/DependentInput';
+
 import SelectWithLabel from '../Selects/SelectWithLabel/SelectWithLabel';
+import DependetSelect from '../Selects/DependentSelect/DependentSelect';
+
+import Checkbox from '../Checkbox/Checkbox';
+import RadioButton from '../Radio/RadioButton';
 
 function FormikControl(props) {
   const { control, ...rest } = props;
@@ -24,6 +28,8 @@ function FormikControl(props) {
       return <InputFile {...rest} />;
     case 'searchInput':
       return <SearchInput {...rest} />;
+    case 'inputForPassword':
+      return <InputForPassword {...rest} />;
     case 'checkbox':
       return <Checkbox {...rest} />;
     case 'dependentSelect':

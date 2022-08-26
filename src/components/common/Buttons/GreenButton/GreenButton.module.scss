@@ -25,6 +25,11 @@
     background: darken($color: #0ad69c, $amount: 5%);
   }
 
+  &:disabled {
+    cursor: default;
+    background: #0ad69c;
+  }
+
   @media screen and (max-width: 420px) {
     width: 10rem;
   }
