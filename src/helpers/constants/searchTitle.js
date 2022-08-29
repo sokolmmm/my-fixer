@@ -1,8 +1,8 @@
 const searchTitle = [
-  { id: 1, value: 'Mr' },
-  { id: 2, value: 'Mrs' },
-  { id: 3, value: 'Ms' },
-  { id: 4, value: 'Miss' },
+  { value: 'mr', title: 'Mr' },
+  { value: 'mrs', title: 'Mrs' },
+  { value: 'ms', title: 'Ms' },
+  { value: 'miss', title: 'Miss' },
 ];
 
 export default searchTitle;

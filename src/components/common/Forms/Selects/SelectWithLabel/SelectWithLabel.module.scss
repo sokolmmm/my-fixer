@@ -1,0 +1,13 @@
+@import '../../../../../scss/mixin';
+
+.formControl {
+  display: grid;
+
+  label {
+    @include label;
+  }
+
+  .selectWrapper {
+    @include select;
+  }
+}

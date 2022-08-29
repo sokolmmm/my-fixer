@@ -3,8 +3,8 @@
   grid-column-start: 2;
   grid-column-end: 3;
   display: grid;
-  grid-template-columns: 136px minmax(200px, 280px) minmax(200px, 280px);
-  gap: 20px;
+  grid-template-columns: 136px minmax(200px, 3.5fr) minmax(200px, 3.5fr);
+  gap: 50px;
 
   .firstColumn {
     display: grid;
@@ -13,22 +13,33 @@
     align-items: start;
     gap: 5px;
 
-    .avatar {
+    .avatarBlock {
       width: 136px;
       height: 136px;
-      border-radius: 50%;
     }
   }
 
   .secondColumn {
     display: grid;
     grid-template-rows: repeat(3, 60px);
-    gap: 30px;
+    gap: 50px;
   }
   .thirdColumn {
     display: grid;
     grid-template-rows: repeat(3, 60px) 40px;
-    gap: 30px;
+    gap: 50px;
+
+    .numberBlock {
+      display: grid;
+      grid-template-columns: 75px 1fr;
+      column-gap: 10px;
+
+      span {
+        grid-column-start: 1;
+        grid-column-end: 3;
+        @include label;
+      }
+    }
   }
 }
 
@@ -36,11 +47,18 @@
   .personalInformation {
     grid-template-columns: 1fr 1fr;
     gap: 40px;
+    column-gap: 10px;
     padding-bottom: 20px;
 
     .firstColumn {
       grid-column-start: 1;
       grid-column-end: 3;
+    }
+    .secondColumn {
+      gap: 20px;
+    }
+    .thirdColumn {
+      gap: 20px;
     }
   }
 }
@@ -48,7 +66,7 @@
 @media screen and (max-width: 480px) {
   .personalInformation {
     grid-template-columns: 1fr;
-    gap: 40px;
+    gap: 20px;
     .firstColumn {
       grid-column-start: 1;
       grid-column-end: 2;

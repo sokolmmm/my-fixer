@@ -81,6 +81,7 @@ const items = [
     rating: '',
   },
 ];
+
 const initialValues = {
   sort: 'price',
 };
@@ -118,17 +119,18 @@ function SearchContent() {
           </Form>
         )}
       </Formik>
-
-      {items.map((item) => (
-        <UserCard
-          key={item.id}
-          name={item.name}
-          location={item.location}
-          stack={item.stack}
-          dailyRate={item.dailyRate}
-          rating={item.rating}
-        />
-      ))}
+      <div className={styles.items}>
+        {items.map((item) => (
+          <UserCard
+            key={item.id}
+            name={item.name}
+            location={item.location}
+            stack={item.stack}
+            dailyRate={item.dailyRate}
+            rating={item.rating}
+          />
+        ))}
+      </div>
     </article>
   );
 }

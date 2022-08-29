@@ -1,0 +1,7 @@
+@import '../../../../../scss/mixin';
+.formControl {
+  input {
+    @include input;
+  }
+
+}

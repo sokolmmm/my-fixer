@@ -1,0 +1,41 @@
+@import '../../scss/mixin';
+@import '../../scss/variables';
+
+.profileWrapper {
+  @include sectionWrapper;
+  row-gap:80px;
+
+  grid-template-rows: 56px 1fr;
+  grid-template-columns: minmax(1.25rem, 0.4fr) minmax(750px, 3fr) minmax(1.25rem, 1fr);
+
+  .toggleTabs {
+    grid-column-start: 2;
+    grid-column-end: 2;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    justify-items: center;
+  }
+}
+
+@media screen and (max-width: 920px) {
+  .profileWrapper {
+    grid-template-columns: 1.25rem 1fr 1.25rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .profileWrapper {
+    row-gap: 1.25rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .profileWrapper {
+    .toggleTab {
+      button {
+        font-size: 12px;
+      }
+    }
+  }
+}

@@ -1,0 +1,29 @@
+@import '../../../../../scss/mixin';
+
+.formControl {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+
+  input {
+    @include input;
+    background: transparent;
+    border: none;
+
+    &::placeholder {
+      color: #252f48;
+      mix-blend-mode: normal;
+      opacity: 0.4;
+    }
+
+    &:active,
+    &:focus {
+      border: none;
+    }
+  }
+
+  img {
+    width: 16px;
+    height: 16px;
+  }
+}
