@@ -19,7 +19,12 @@ $api.interceptors.response.use(
   (config) => config,
   async (error) => {
     const originalRequest = error.config;
-    if (error.response.status === 401 && error.config && !error.config._isRetry) {
+    if (
+      error.response.status === 401
+      && error.config
+      && !error.config._isRetry
+      && !error.request.responseURL.includes('sign-in')
+    ) {
       try {
         const refreshToken = `Bearer ${window.localStorage.getItem('refresh')}`;
         const response = await axios.get(`${API_URL}auth/refresh`, {

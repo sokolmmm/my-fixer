@@ -5,9 +5,9 @@ import { Form, Formik } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
-import GreenButton from '../../common/Buttons/GreenButton/GreenButton';
 import FormikControl from '../../common/Forms/FormikControl/FormikControl';
-import CombinedError from '../../common/Forms/CombinedError/CombinedError';
+import CombinedError from '../../common/Forms/Errors/CombinedError/CombinedError';
+import SubmitButton from '../../common/Buttons/SubmitButton/SubmitButton';
 import styles from './ConfirmRecoveryForm.module.scss';
 
 import { checkCode } from '../../../redux/password/asyncActions';
@@ -62,7 +62,7 @@ function ConfirmRecoveryForm() {
             condition={!formik.touched.code && isSent}
           />
 
-          <GreenButton textBody="Send" disabled={!formik.isValid || formik.isSubmitting} />
+          <SubmitButton textBody="Send" disabled={!formik.isValid || formik.isSubmitting} />
         </Form>
       )}
     </Formik>

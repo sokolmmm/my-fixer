@@ -3,7 +3,6 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 
 import UserService from '../../services/userService';
 import { setIsAuthFalse } from '../auth/slice';
-// import { setUserData } from './slice';
 
 export const updatePersonalInfo = createAsyncThunk(
   'user/updatePersonalInfo',
@@ -27,8 +26,22 @@ export const updatePhoto = createAsyncThunk(
     try {
       const response = await UserService.updatePhoto(payload);
 
-      // const userData = response.data;
-      // dispatch(setUserData(userData));
+      return response.data;
+    } catch (error) {
+      if (error.response.status === 401) {
+        dispatch(setIsAuthFalse());
+      }
+      return rejectWithValue(error.response.data);
+    }
+  },
+);
+
+export const getUser = createAsyncThunk(
+  'user/getUser',
+  async (payload, { rejectWithValue, dispatch, getState }) => {
+    try {
+      const { id } = getState().user.userData;
+      const response = await UserService.getUser(id);
 
       return response.data;
     } catch (error) {

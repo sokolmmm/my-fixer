@@ -5,15 +5,15 @@ import React from 'react';
 import { Field, useFormikContext } from 'formik';
 import styles from './DependentInput.module.scss';
 
-function DependetInput(props) {
+function DependentInput(props) {
   const {
     type,
     name,
     placeholder,
-    initialValue,
     items,
     mainField,
     mainFieldKey,
+    additionalField,
     dependentFieldKey,
     ...rest
   } = props;
@@ -21,13 +21,15 @@ function DependetInput(props) {
   const { values, setFieldValue, touched } = useFormikContext();
 
   React.useEffect(() => {
-    if (values[mainField].trim() !== '') {
-      const dependetValue = items.find((el) => el[mainFieldKey] === values[mainField])[
+    if (!touched[additionalField] && !touched[mainField] && !touched[name]) {
+      setFieldValue(name, values[name]);
+    } else if ((touched[additionalField] || touched[mainField])) {
+      const dependentValue = items.find((el) => el[mainFieldKey] === values[mainField])[
         dependentFieldKey
       ];
-      setFieldValue(name, dependetValue);
+      setFieldValue(name, dependentValue);
     }
-  }, [values[mainField], setFieldValue, name]);
+  }, [values[mainField], setFieldValue, touched]);
 
   return (
     <div className={styles.formControl}>
@@ -36,4 +38,4 @@ function DependetInput(props) {
   );
 }
 
-export default DependetInput;
+export default DependentInput;

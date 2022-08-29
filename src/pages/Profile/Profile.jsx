@@ -1,29 +1,38 @@
-/* eslint-disable react/no-unstable-nested-components */
-/* eslint-disable jsx-a11y/label-has-associated-control */
-/* eslint-disable max-len */
-/* eslint-disable no-unused-vars */
 import React from 'react';
+
+import { useDispatch, useSelector } from 'react-redux';
 import { Outlet, useLocation } from 'react-router-dom';
+
 import ToggleTab from '../../components/common/Links/ToggleTab/ToggleTab';
 import styles from './Profile.module.scss';
 
+import { selectIstAuth } from '../../redux/auth/selectors';
+import { getUser } from '../../redux/user/asyncActions';
+
 function Profile() {
+  const dispatch = useDispatch();
   const location = useLocation(0);
+
+  const isAuth = useSelector(selectIstAuth);
+
   const [path, setPath] = React.useState(location.pathname);
   const [currentPage, setCurrentPage] = React.useState('personal-info');
 
   React.useEffect(() => {
     setPath(location.pathname);
-  }, [location]);
 
-  React.useEffect(() => {
-    if (path === '/profile/personal-info') {
+    if (path.includes('personal-info')) {
       setCurrentPage('personal-info');
-    } else if (path === '/profile/account-info') {
+    } else if (path.includes('account-info')) {
       setCurrentPage('account-info');
     }
-  }, [path]);
+  }, [location, path]);
 
+  React.useEffect(() => {
+    if (isAuth) {
+      dispatch(getUser());
+    }
+  }, []);
   return (
     <section className={styles.profileWrapper}>
       <div className={styles.toggleTabs}>

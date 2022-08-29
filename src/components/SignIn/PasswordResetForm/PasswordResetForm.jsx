@@ -5,10 +5,10 @@ import { Form, Formik } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
-import GreenButton from '../../common/Buttons/GreenButton/GreenButton';
 import FormikControl from '../../common/Forms/FormikControl/FormikControl';
-import CombinedError from '../../common/Forms/CombinedError/CombinedError';
 import PasswordChecker from '../../common/PasswordChecker/PasswordChecker';
+import CombinedError from '../../common/Forms/Errors/CombinedError/CombinedError';
+import SubmitButton from '../../common/Buttons/SubmitButton/SubmitButton';
 import passwordRegEx from '../../../helpers/constants/passwordRegEx';
 import styles from './PasswordResetForm.module.scss';
 
@@ -92,7 +92,7 @@ function PasswordResetForm() {
             condition={!formik.touched.password && !formik.touched.confirmPassword && isSent}
           />
 
-          <GreenButton textBody="Reset" />
+          <SubmitButton textBody="Reset" />
         </Form>
       )}
     </Formik>
