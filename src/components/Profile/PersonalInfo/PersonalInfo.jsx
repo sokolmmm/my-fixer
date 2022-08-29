@@ -1,67 +1,87 @@
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
-/* eslint-disable no-unused-vars */
 import React from 'react';
 import CountryList from 'country-list-with-dial-code-and-flag';
-import * as Yup from 'yup';
 
 import { Form, Formik } from 'formik';
 import { useSelector, useDispatch } from 'react-redux';
 
-import GreenButton from '../../common/Buttons/GreenButton/GreenButton';
 import FormikControl from '../../common/Forms/FormikControl/FormikControl';
-import avatar from '../../../assets/images/avatar.png';
-import styles from './PersonalInfo.module.scss';
+import DoubleServerError from '../../common/Forms/Errors/DoubleServerError/DoubleServerError';
+import GreenButton from '../../common/Buttons/GreenButton/GreenButton';
+import defaultAvatar from '../../../assets/images/avatar.png';
 import searchTitle from '../../../helpers/constants/searchTitle';
+import styles from './PersonalInfo.module.scss';
 
-import Base64 from '../../../helpers/base64';
-import { updatePersonalInfo } from '../../../redux/user/asyncActions';
-
-const validationSchema = Yup.object({
-  email: Yup.string().email('Invalid email address').required('Required'),
-});
+import { updatePersonalInfo, updatePhoto } from '../../../redux/user/asyncActions';
+import { selectUser } from '../../../redux/user/selectors';
+import Avatar from '../../common/Avatar/Avatar';
 
 function PersonalInfo() {
   const dispatch = useDispatch();
-  const { userData } = useSelector((state) => state.user);
+
+  const { userData, errors, statuses } = useSelector(selectUser);
+
+  const { updatePhotoStatus } = statuses;
+  const { updatePersonalInfoError, updatePhotoError } = errors;
+
+  const [base64Photo, setBase64Photo] = React.useState();
+  const [dialCodeValue, setDialCodeValue] = React.useState('');
+
+  React.useEffect(() => {
+    const code = CountryList.find((el) => el.name === userData.country);
+    if (code) {
+      setDialCodeValue(code.flag);
+    }
+  }, [userData.phoneNumber]);
 
   const initialValues = {
-    photo: '',
+    photo: userData.photo,
     firstName: userData.firstName,
     lastName: userData.lastName,
     email: userData.email,
-    country: userData.country || '',
-    phoneNumber: userData.phoneNumber || '',
-    title: userData.title || searchTitle[0],
-    dialCode: '',
+    country: userData.country,
+    phoneNumber: userData.phoneNumber,
+    title: userData.title,
+    dialCode: dialCodeValue,
   };
 
-  const onSubmit = async (values, actions) => {
+  const onSubmit = async (values) => {
     const { photo, dialCode, ...payload } = values;
-    dispatch(updatePersonalInfo(payload));
 
-    // if (photo) {
-    //   const base64Photo = await Base64.encode(photo);
-    //   dispatch(updatePhoto({ photo: base64Photo }));
-    // }
+    if (
+      initialValues.firstName !== values.firstName
+      || initialValues.lastName !== values.lastName
+      || initialValues.email !== values.email
+      || initialValues.country !== values.country
+      || initialValues.phoneNumber !== values.phoneNumber
+      || initialValues.title !== values.title
+    ) {
+      await dispatch(updatePersonalInfo(payload));
+    }
+
+    if (base64Photo) {
+      await dispatch(updatePhoto({ photo: base64Photo }));
+      setBase64Photo('');
+    }
   };
 
   return (
-    <Formik enableReinitialize onSubmit={onSubmit} initialValues={initialValues} validationSchema={validationSchema}>
+    <Formik initialValues={initialValues}>
       {(formik) => (
         <Form className={styles.personalInformation}>
           <div className={styles.firstColumn}>
-            <img
-              className={styles.avatar}
-              alt="avatar"
-              src={formik.values.photo[0] || userData.photo || avatar}
-            />
+            <div className={styles.avatarBlock}>
+              <Avatar
+                visibleCondition={updatePhotoStatus === 'loading'}
+                imageSrc={base64Photo || userData.photo || defaultAvatar}
+              />
+            </div>
 
             <FormikControl
               control="inputFile"
               label="Change photo"
               name="photo"
               setFieldValue={formik.setFieldValue}
+              setBase64Photo={setBase64Photo}
             />
           </div>
           <div className={styles.secondColumn}>
@@ -113,13 +133,18 @@ function PersonalInfo() {
                 mainField="dialCode"
                 mainFieldKey="flag"
                 dependentFieldKey="dial_code"
-                initialValue={userData.phoneNumber}
+                additionalField="country"
               />
             </div>
 
             <FormikControl control="inputWithLabel" type="email" label="E-mail" name="email" />
-            {/* {error ? <div>{error}</div> : null} */}
-            <GreenButton textBody="Save" />
+
+            <GreenButton textBody="Save" onButtonClick={onSubmit} values={formik.values} />
+
+            <DoubleServerError
+              firstError={updatePersonalInfoError}
+              secondError={updatePhotoError}
+            />
           </div>
         </Form>
       )}

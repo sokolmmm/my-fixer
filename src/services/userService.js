@@ -8,4 +8,8 @@ export default class UserService {
   static updatePhoto(payload) {
     return $api.put('/users/photo', payload);
   }
+
+  static getUser(id) {
+    return $api.get(`users/${id}`);
+  }
 }

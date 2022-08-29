@@ -1,18 +1,14 @@
-/* eslint-disable prefer-regex-literals */
-/* eslint-disable no-useless-escape */
-/* eslint-disable jsx-a11y/label-has-associated-control */
-/* eslint-disable no-unused-vars */
-import { ErrorMessage, Form, Formik } from 'formik';
 import React from 'react';
 import * as Yup from 'yup';
 
+import { ErrorMessage, Form, Formik } from 'formik';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
-import GreenButton from '../../common/Buttons/GreenButton/GreenButton';
-import TextError from '../../common/Forms/TextError/TextError';
 import FormikControl from '../../common/Forms/FormikControl/FormikControl';
 import PasswordChecker from '../../common/PasswordChecker/PasswordChecker';
+import TextError from '../../common/Forms/Errors/TextError/TextError';
+import SubmitButton from '../../common/Buttons/SubmitButton/SubmitButton';
 import passwordRegEx from '../../../helpers/constants/passwordRegEx';
 import styles from './SignUpCompleteForm.module.scss';
 import reCaptcha from '../../../assets/images/re_captcha.png';
@@ -108,10 +104,12 @@ function SignUpCompleteForm() {
             />
             <NavLink to="s">Privacy Policy</NavLink>
           </div>
+
           <figure>
             <img src={reCaptcha} alt="reCaptcha" />
           </figure>
-          <GreenButton textBody="Get started" disabled={!formik.isValid} />
+
+          <SubmitButton textBody="Get started" disabled={!formik.isValid} />
         </Form>
       )}
     </Formik>

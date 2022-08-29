@@ -11,7 +11,7 @@ export default class Base64 {
     return body;
   }
 
-  static encode(file) {
+  static readFile(file) {
     return new Promise((resolve, reject) => {
       const fileReader = new FileReader();
       fileReader.readAsDataURL(file);

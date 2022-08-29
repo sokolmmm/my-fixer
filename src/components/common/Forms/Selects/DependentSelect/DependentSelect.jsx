@@ -4,7 +4,7 @@ import { Field, useFormikContext } from 'formik';
 import React from 'react';
 import styles from './DependentSelect.module.scss';
 
-function DependetSelect(props) {
+function DependentSelect(props) {
   const {
     name,
     options,
@@ -17,15 +17,17 @@ function DependetSelect(props) {
 
   const { values, setFieldValue } = useFormikContext();
 
+  // React.useEffect(() => {
+  //   if (!touched[additionalField] && !touched[mainField] && !touched[name]) {
+  //     setFieldValue(name, dependentFieldValue);
   React.useEffect(() => {
     if (values[mainField].trim() !== '') {
-      const dependetValue = options.find(
+      const dependentValue = options.find(
         (el) => el[mainFieldKey] === values[mainField],
       )[optionValue];
-      setFieldValue(name, dependetValue);
+      setFieldValue(name, dependentValue);
     }
   }, [values[mainField], setFieldValue, name]);
-
   return (
     <div className={styles.formControl}>
       <Field as="select" id={name} name={name} {...rest}>
@@ -39,4 +41,4 @@ function DependetSelect(props) {
   );
 }
 
-export default DependetSelect;
+export default DependentSelect;

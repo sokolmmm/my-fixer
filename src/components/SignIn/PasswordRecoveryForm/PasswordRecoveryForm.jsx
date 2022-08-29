@@ -5,9 +5,9 @@ import { Form, Formik } from 'formik';
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
-import GreenButton from '../../common/Buttons/GreenButton/GreenButton';
 import FormikControl from '../../common/Forms/FormikControl/FormikControl';
-import CombinedError from '../../common/Forms/CombinedError/CombinedError';
+import SubmitButton from '../../common/Buttons/SubmitButton/SubmitButton';
+import CombinedError from '../../common/Forms/Errors/CombinedError/CombinedError';
 import styles from './PasswordRecoveryForm.module.scss';
 
 import { sendResetPasswordMail } from '../../../redux/password/asyncActions';
@@ -66,7 +66,7 @@ function PasswordRecoveryForm() {
             condition={!formik.touched.email && isSent}
           />
 
-          <GreenButton
+          <SubmitButton
             textBody="Send"
             disabled={!formik.isValid || formik.isSubmitting}
           />

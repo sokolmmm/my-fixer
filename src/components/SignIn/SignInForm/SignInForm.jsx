@@ -6,10 +6,10 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import { ErrorMessage, Form, Formik } from 'formik';
 import { useSelector, useDispatch } from 'react-redux';
 
-import GreenButton from '../../common/Buttons/GreenButton/GreenButton';
 import FormikControl from '../../common/Forms/FormikControl/FormikControl';
-import TextError from '../../common/Forms/TextError/TextError';
-import CombinedError from '../../common/Forms/CombinedError/CombinedError';
+import CombinedError from '../../common/Forms/Errors/CombinedError/CombinedError';
+import TextError from '../../common/Forms/Errors/TextError/TextError';
+import SubmitButton from '../../common/Buttons/SubmitButton/SubmitButton';
 import styles from './SignInForm.module.scss';
 
 import { signIn } from '../../../redux/auth/asyncActions';
@@ -78,7 +78,7 @@ function SignInForm() {
 
           <NavLink to="password-recovery">Forgot password?</NavLink>
 
-          <GreenButton textBody="Sign in" disabled={!formik.isValid || formik.isSubmitting || !formik.values} />
+          <SubmitButton textBody="Sign in" disabled={!formik.isValid || formik.isSubmitting || !formik.values} />
         </Form>
       )}
     </Formik>

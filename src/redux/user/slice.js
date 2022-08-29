@@ -2,7 +2,7 @@
 /* eslint-disable no-param-reassign */
 import { createSlice } from '@reduxjs/toolkit';
 
-import { updatePersonalInfo, updatePhoto } from './asyncActions';
+import { getUser, updatePersonalInfo, updatePhoto } from './asyncActions';
 
 const initialState = {
   userData: {
@@ -49,7 +49,7 @@ export const userSlice = createSlice({
     });
     builder.addCase(updatePersonalInfo.rejected, (state, action) => {
       state.statuses.updatePersonalInfoStatus = 'rejected';
-      state.errors.updatePersonalInfoError = action.payload;
+      state.errors.updatePersonalInfoError = action.payload.error;
     });
     builder.addCase(updatePhoto.pending, (state) => {
       state.statuses.updatePhotoStatus = 'loading';
@@ -61,7 +61,10 @@ export const userSlice = createSlice({
     });
     builder.addCase(updatePhoto.rejected, (state, action) => {
       state.statuses.updatePhotoStatus = 'rejected';
-      state.errors.updatePhotoError = action.payload;
+      state.errors.updatePhotoError = action.payload.error;
+    });
+    builder.addCase(getUser.fulfilled, (state, action) => {
+      state.userData = action.payload;
     });
   },
 });

@@ -5,10 +5,10 @@ import { ErrorMessage, Form, Formik } from 'formik';
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
-import GreenButton from '../../common/Buttons/GreenButton/GreenButton';
 import FormikControl from '../../common/Forms/FormikControl/FormikControl';
-import TextError from '../../common/Forms/TextError/TextError';
-import CombinedError from '../../common/Forms/CombinedError/CombinedError';
+import TextError from '../../common/Forms/Errors/TextError/TextError';
+import CombinedError from '../../common/Forms/Errors/CombinedError/CombinedError';
+import SubmitButton from '../../common/Buttons/SubmitButton/SubmitButton';
 import styles from './SignUpForm.module.scss';
 
 import { firstStepSignUp } from '../../../redux/signUp/slice';
@@ -64,7 +64,7 @@ function SignUpForm() {
             condition={!formik.touched.email && !formik.touched.firstName && !formik.touched.lastName}
           />
 
-          <GreenButton textBody="Get started" disabled={!formik.isValid} />
+          <SubmitButton textBody="Get started" disabled={!formik.isValid} />
         </Form>
       )}
     </Formik>
